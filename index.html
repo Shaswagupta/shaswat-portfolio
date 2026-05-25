@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shaswat Gupta - CS Engineer, Full-Stack Developer and AI Enthusiast.">
+  <title>Shaswat Gupta | Anti-Gravity Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <canvas id="particles"></canvas>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo" id="navLogo">&lt;SG /&gt;</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <section id="hero" class="section hero-section">
+    <div class="hero-content">
+      <p class="hero-greeting">Designing Refined Digital Solutions</p>
+      <h1 class="hero-title">Hi, I'm <span class="gradient-text">Shaswat Gupta</span></h1>
+      <p class="hero-subtitle" id="typingText"></p>
+      <p class="hero-desc">Passionate about building elegant digital experiences and solving complex problems with clean, efficient code.</p>
+      <a href="#contact" class="btn btn-primary">Get In Touch <span class="btn-arrow">&rarr;</span></a>
+    </div>
+    <div class="hero-visual">
+      <div class="fluid-blob-container">
+        <div class="fluid-blob"></div>
+        <div class="fluid-blob-overlay"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="section-container">
+      <h2 class="section-title"><span class="gradient-text">About Me</span></h2>
+      <p class="section-subtitle">Discover my journey and passions</p>
+      <div class="cards-grid">
+        <div class="glass-card" data-anim="fade-up">
+          <div class="card-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 3 6 3s6-1.9 6-3v-5"/></svg></div>
+          <h3>Education</h3>
+          <p>Pursuing Computer Science Engineering with a strong foundation in mathematics, algorithms, and system design.</p>
+        </div>
+        <div class="glass-card" data-anim="fade-up">
+          <div class="card-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg></div>
+          <h3>Development</h3>
+          <p>Full-stack developer experienced in modern web technologies, REST APIs, and database management.</p>
+        </div>
+        <div class="glass-card" data-anim="fade-up">
+          <div class="card-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 4 0 4 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-4 0-4"/></svg></div>
+          <h3>Projects</h3>
+          <p>From AI-powered disease detection to e-commerce platforms, my projects showcase creativity and technical depth.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="section">
+    <div class="section-container">
+      <h2 class="section-title"><span class="gradient-text">Technical Skills</span></h2>
+      <p class="section-subtitle">Technologies I work with</p>
+      <div class="skills-grid">
+        <div class="glass-card skill-card" data-anim="fade-up">
+          <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="m10 13-2 2 2 2"/><path d="m14 17 2-2-2-2"/></svg> Languages</h3>
+          <div class="skill-item"><span>C++</span><div class="skill-bar"><div class="skill-fill" data-level="90"></div></div></div>
+          <div class="skill-item"><span>JavaScript</span><div class="skill-bar"><div class="skill-fill" data-level="85"></div></div></div>
+          <div class="skill-item"><span>Python</span><div class="skill-bar"><div class="skill-fill" data-level="80"></div></div></div>
+          <div class="skill-item"><span>SQL</span><div class="skill-bar"><div class="skill-fill" data-level="75"></div></div></div>
+        </div>
+        <div class="glass-card skill-card" data-anim="fade-up">
+          <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Web Development</h3>
+          <div class="skill-item"><span>HTML / CSS</span><div class="skill-bar"><div class="skill-fill" data-level="92"></div></div></div>
+          <div class="skill-item"><span>React</span><div class="skill-bar"><div class="skill-fill" data-level="82"></div></div></div>
+          <div class="skill-item"><span>Node.js</span><div class="skill-bar"><div class="skill-fill" data-level="78"></div></div></div>
+          <div class="skill-item"><span>REST APIs</span><div class="skill-bar"><div class="skill-fill" data-level="85"></div></div></div>
+        </div>
+        <div class="glass-card skill-card" data-anim="fade-up">
+          <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Tools &amp; Platforms</h3>
+          <div class="skill-item"><span>Git</span><div class="skill-bar"><div class="skill-fill" data-level="88"></div></div></div>
+          <div class="skill-item"><span>Docker</span><div class="skill-bar"><div class="skill-fill" data-level="70"></div></div></div>
+          <div class="skill-item"><span>MongoDB</span><div class="skill-bar"><div class="skill-fill" data-level="76"></div></div></div>
+          <div class="skill-item"><span>VS Code</span><div class="skill-bar"><div class="skill-fill" data-level="95"></div></div></div>
+        </div>
+        <div class="glass-card skill-card" data-anim="fade-up">
+          <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Specializations</h3>
+          <div class="skill-item"><span>AI / ML</span><div class="skill-bar"><div class="skill-fill" data-level="75"></div></div></div>
+          <div class="skill-item"><span>DSA</span><div class="skill-bar"><div class="skill-fill" data-level="88"></div></div></div>
+          <div class="skill-item"><span>OOP</span><div class="skill-bar"><div class="skill-fill" data-level="90"></div></div></div>
+          <div class="skill-item"><span>Full Stack</span><div class="skill-bar"><div class="skill-fill" data-level="83"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section">
+    <div class="section-container">
+      <h2 class="section-title"><span class="gradient-text">Featured Projects</span></h2>
+      <p class="section-subtitle">A selection of things I have built</p>
+      <div class="projects-grid">
+        <div class="glass-card project-card" data-anim="fade-up">
+          <div class="project-img"><img src="img_bank.png" alt="Bank Management System" loading="lazy"></div>
+          <div class="project-body">
+            <h3>Bank Management System</h3>
+            <p>Comprehensive banking solution with account management, transaction processing, and secure file-based data persistence.</p>
+            <div class="project-tags"><span>C++</span><span>OOP</span><span>File I/O</span></div>
+          </div>
+        </div>
+        <div class="glass-card project-card" data-anim="fade-up">
+          <div class="project-img"><img src="img_crop.png" alt="Crop Disease Detector" loading="lazy"></div>
+          <div class="project-body">
+            <h3>Crop Disease Detector</h3>
+            <p>ML-powered app that identifies crop diseases from leaf images using CNNs with high accuracy.</p>
+            <div class="project-tags"><span>Python</span><span>ML</span><span>CNN</span></div>
+          </div>
+        </div>
+        <div class="glass-card project-card" data-anim="fade-up">
+          <div class="project-img"><img src="img_ecommerce.png" alt="E-Commerce Platform" loading="lazy"></div>
+          <div class="project-body">
+            <h3>E-Commerce Platform</h3>
+            <p>Full-featured online store with user auth, product catalog, cart system, and Stripe payment integration.</p>
+            <div class="project-tags"><span>MERN</span><span>Stripe</span><span>MongoDB</span></div>
+          </div>
+        </div>
+        <div class="glass-card project-card" data-anim="fade-up">
+          <div class="project-img"><img src="img_movie.png" alt="Movie Ticket Booking" loading="lazy"></div>
+          <div class="project-body">
+            <h3>Movie Ticket Booking</h3>
+            <p>Cinema booking system with seat selection, showtime management, and efficient DSA-based scheduling.</p>
+            <div class="project-tags"><span>C++</span><span>DSA</span><span>Algorithms</span></div>
+          </div>
+        </div>
+        <div class="glass-card project-card" data-anim="fade-up">
+          <div class="project-img"><img src="img_plant.png" alt="Plant Disease Classification" loading="lazy"></div>
+          <div class="project-body">
+            <h3>Plant Disease Classification</h3>
+            <p>Deep learning model using transfer learning to classify plant diseases with 95%+ accuracy.</p>
+            <div class="project-tags"><span>TensorFlow</span><span>Transfer Learning</span><span>DL</span></div>
+          </div>
+        </div>
+        <div class="glass-card project-card" data-anim="fade-up">
+          <div class="project-img"><img src="img_dashboard.png" alt="Data Visualization Dashboard" loading="lazy"></div>
+          <div class="project-body">
+            <h3>Data Visualization Dashboard</h3>
+            <p>Interactive analytics dashboard with dynamic charts, filters, and real-time data rendering.</p>
+            <div class="project-tags"><span>JavaScript</span><span>D3.js</span><span>Analytics</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="section-container">
+      <h2 class="section-title"><span class="gradient-text">Get In Touch</span></h2>
+      <p class="section-subtitle">Let us build something amazing together</p>
+      <div class="contact-grid">
+        <form class="glass-card contact-form" id="contactForm" data-anim="fade-up">
+          <div class="form-group"><input type="text" id="nameInput" placeholder="Your Name" required></div>
+          <div class="form-group"><input type="email" id="emailInput" placeholder="Your Email" required></div>
+          <div class="form-group"><input type="text" id="subjectInput" placeholder="Subject" required></div>
+          <div class="form-group"><textarea id="messageInput" rows="5" placeholder="Your Message" required></textarea></div>
+          <button type="submit" class="btn btn-primary btn-full">Send Message &rarr;</button>
+          <p class="form-success" id="formSuccess">Message sent successfully! I will get back to you soon.</p>
+        </form>
+        <div class="contact-info" data-anim="fade-up">
+          <div class="glass-card info-card">
+            <div class="card-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+            <h3>Email</h3><p><a href="mailto:shaswagupta@gmail.com" style="color: var(--text-dim); text-decoration: none; transition: color 0.3s; font-weight: 500;">shaswagupta@gmail.com</a></p>
+          </div>
+          <div class="glass-card info-card">
+            <div class="card-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <h3>Location</h3><p>Delhi, India</p>
+          </div>
+          <div class="glass-card info-card">
+            <div class="card-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+            <h3>Socials</h3>
+            <div class="social-links">
+              <a href="https://github.com/Shaswagupta" target="_blank" rel="noopener" class="social-link" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg></a>
+              <a href="https://www.linkedin.com/in/shaswatgupta26/" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+              <a href="https://www.instagram.com/_shaswat__01/" target="_blank" rel="noopener" class="social-link" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="footer">
+    <p>&copy; 2026 Shaswat Gupta. Crafted with passion and code. <span id="adminTrigger" style="cursor:pointer;opacity:0.2;margin-left:8px;" title="Admin Access">&bull;</span></p>
+    <p class="footer-tagline">Defying gravity, one pixel at a time.</p>
+  </footer>
+
+  <!-- ═══════════════ ADMIN DASHBOARD MODAL ═══════════════ -->
+  <div id="adminModal" class="admin-modal-overlay">
+    <div class="admin-modal-container glass-card">
+      <div class="admin-modal-header">
+        <h2><span class="gradient-text">Admin Dashboard</span></h2>
+        <div class="admin-header-actions">
+          <button id="exportCsvBtn" class="btn btn-secondary btn-sm" style="padding: 8px 16px; font-size: 0.85rem;">Export CSV</button>
+          <button id="clearAllBtn" class="btn btn-danger btn-sm" style="padding: 8px 16px; font-size: 0.85rem; background: rgba(239, 68, 68, 0.2); border: 1px solid rgba(239, 68, 68, 0.4); color: #fca5a5;">Clear All</button>
+          <button id="closeAdminBtn" class="admin-close-btn">&times;</button>
+        </div>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="admin-stats-grid">
+        <div class="admin-stat-card">
+          <span class="stat-num" id="statTotal">0</span>
+          <span class="stat-label">Total Submissions</span>
+        </div>
+        <div class="admin-stat-card">
+          <span class="stat-num" id="statUnread">0</span>
+          <span class="stat-label">Unread Messages</span>
+        </div>
+        <div class="admin-stat-card">
+          <span class="stat-num" style="font-size: 1.2rem; line-height: 2;" id="statLatest">-</span>
+          <span class="stat-label">Latest Contact</span>
+        </div>
+      </div>
+
+      <!-- Filters & Search -->
+      <div class="admin-filter-bar">
+        <input type="text" id="adminSearchInput" placeholder="Search by name, email, subject..." class="admin-search-input">
+        <select id="adminStatusFilter" class="admin-filter-select">
+          <option value="all">All Messages</option>
+          <option value="unread">Unread Only</option>
+          <option value="read">Read Only</option>
+        </select>
+      </div>
+
+      <!-- Data Table Wrapper -->
+      <div class="admin-table-wrapper">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Subject</th>
+              <th>Message</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="adminTableBody">
+            <tr>
+              <td colspan="7" style="text-align: center; color: var(--text-dim); padding: 40px 0;">No submissions found.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Message Detail Modal -->
+  <div id="detailModal" class="detail-modal-overlay">
+    <div class="detail-modal-content glass-card">
+      <div class="detail-modal-header">
+        <h3 id="detailSubject">Message Details</h3>
+        <button id="closeDetailBtn" class="detail-close-btn">&times;</button>
+      </div>
+      <div class="detail-modal-body">
+        <p><strong>From:</strong> <span id="detailSender"></span></p>
+        <p><strong>Date:</strong> <span id="detailDate"></span></p>
+        <div class="detail-message-box" id="detailMessage"></div>
+      </div>
+      <div class="detail-modal-footer">
+        <button id="markReadBtn" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem;">Mark as Read</button>
+        <button id="deleteDetailBtn" class="btn" style="padding: 8px 20px; font-size: 0.9rem; background: rgba(239, 68, 68, 0.2); border: 1px solid rgba(239, 68, 68, 0.4); color: #fca5a5;">Delete Message</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="custom-cursor-dot"></div>
+  <div class="custom-cursor-outline"></div>
+  <script src="script.js"></script>
+</body>
+</html>
