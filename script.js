@@ -1,12 +1,143 @@
 const CONFIG = {
   // Web3Forms Access Key for silent background email submission.
-  // Get a free key at https://web3forms.com/ and paste it below:
-  WEB3FORMS_ACCESS_KEY: 'e795c05e-f999-456f-8cb6-ca323e2d6f88'
+  WEB3FORMS_ACCESS_KEY: 'e795c05e-f999-456f-8cb6-ca323e2d6f88',
+  ADMIN_PASSCODE: 'admin'
+};
+
+/* ═══════════════ PROJECT CASE STUDIES DATABASE ═══════════════ */
+const caseStudies = {
+  'bank-management': {
+    title: 'Bank Management System',
+    role: 'Lead C++ Developer',
+    timeline: '4 Weeks',
+    github: 'https://github.com/Shaswagupta',
+    demo: '#',
+    techStack: ['C++', 'Object-Oriented Programming (OOP)', 'File I/O', 'Data Persistence'],
+    overview: 'A robust console-based banking application designed to handle critical operations like account creation, secure deposits/withdrawals, balance inquiries, and account updates. Built with C++ to explore systems-level performance, structured design patterns, and reliability.',
+    problem: 'Traditional console management projects often rely on volatile memory, losing all data upon execution exit. The core challenge was implementing a lightweight, performant, and secure file-based storage format that acts as a relational database wrapper without modern third-party database dependencies.',
+    solution: 'Designed a clean object-oriented architecture leveraging C++ file streams (fstream) to serialize and deserialize class structures. Implemented safety features like transaction logs and dynamic file buffering to protect data integrity during write failures.',
+    features: [
+      'Secure multi-user authentication with masked input routines.',
+      'Dynamic ledger generation with complete transaction history support.',
+      'Efficient O(1) account queries using file pointer offset calculation.',
+      'Strict object-oriented validation preventing overdrafts and boundary violations.'
+    ],
+    challenges: 'Handling simultaneous file reads and writes safely. C++ file pointers can easily get corrupted if data offsets are miscalculated. Resolved by enforcing fixed-length records and implementing file lock validation rules.',
+    learnings: 'Mastered file stream manipulation, pointer arithmetic, memory layout of C++ classes, and the importance of structured error handling in system programs.',
+    achievement: 'Implemented O(1) constant-time direct record lookup using block serialization math.',
+    image: 'img_bank.png'
+  },
+  'crop-disease': {
+    title: 'Crop Disease Detector',
+    role: 'ML Engineer & Developer',
+    timeline: '6 Weeks',
+    github: 'https://github.com/Shaswagupta',
+    demo: '#',
+    techStack: ['Python', 'TensorFlow', 'Convolutional Neural Networks (CNN)', 'OpenCV', 'Streamlit'],
+    overview: 'A high-performance machine learning system built to classify crop diseases in real-time. By leveraging computer vision and deep learning models, the app helps farmers identify plant abnormalities and suggests treatment plans.',
+    problem: 'Smallholder farmers lose significant percentages of their yield due to late detection of crop diseases. Existing cloud solutions require constant high-speed internet connections, which is rare in remote agricultural areas.',
+    solution: 'Trained a localized deep Convolutional Neural Network (CNN) using the PlantVillage dataset. Implemented model optimization techniques like float16 quantization to shrink the memory footprint to under 45MB, allowing edge deployment.',
+    features: [
+      'Real-time camera classification with optimized preprocessing.',
+      'Support for 38 distinct crop-disease classes across 14 crop species.',
+      'Actionable remedy output with links to eco-friendly treatment procedures.',
+      'Offline mode support for remote deployment without internet access.'
+    ],
+    challenges: 'Preventing model overfitting while training on visual datasets with variable lighting conditions. Addressed by applying extensive data augmentation techniques (rotation, zoom, horizontal flips) and adding dropout regularization layers.',
+    learnings: 'Acquired deep understanding of CNN feature extraction, model inference optimization, learning rate schedulers, and Streamlit dashboard design.',
+    achievement: 'Achieved 95.8% validation accuracy while maintaining sub-100ms inference time on standard CPUs.',
+    image: 'img_crop.png'
+  },
+  'ecommerce': {
+    title: 'E-Commerce Platform',
+    role: 'Full-Stack Developer',
+    timeline: '8 Weeks',
+    github: 'https://github.com/Shaswagupta',
+    demo: '#',
+    techStack: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Stripe API', 'JWT Authentication'],
+    overview: 'An editorial-grade digital marketplace designed for modern retail. Features a responsive catalog, advanced multi-stage filtering, dynamic shopping cart logic, secure user profiles, and seamless credit card processing.',
+    problem: 'Many custom e-commerce engines suffer from database bottlenecks during checkout spikes, along with security vulnerabilities in session-based cart states and token storage.',
+    solution: 'Built a stateless, RESTful MERN stack architecture with JWTs stored in secure HTTP-only cookies. Implemented Stripe Webhooks to guarantee order creation only after successful payment authorization, bypassing front-end reliability issues.',
+    features: [
+      'High-performance search engine with autocomplete and category-based tagging.',
+      'Dynamic real-time cart state syncing across multiple client tabs.',
+      'Robust checkout pipeline integrated with secure Stripe APIs.',
+      'Administrative metrics panel tracking total sales, status updates, and user records.'
+    ],
+    challenges: 'Preventing duplicate orders during concurrent API calls during high-traffic intervals. Solved by implementing optimistic locking on inventory counts in MongoDB and checking transaction status before executing credit charges.',
+    learnings: 'Gained proficiency in secure cookie session handling, webhooks integration, database modeling with Mongoose, and CSS-based responsive layout optimization.',
+    achievement: 'Designed a secure checkout pipeline with Stripe webhooks protecting orders from frontend manipulation.',
+    image: 'img_ecommerce.png'
+  },
+  'movie-booking': {
+    title: 'Movie Ticket Booking',
+    role: 'DSA Specialist & Developer',
+    timeline: '5 Weeks',
+    github: 'https://github.com/Shaswagupta/movie-ticket-booking-system',
+    demo: 'https://onlinegdb.com/ASSIbLcIg',
+    techStack: ['C++', 'Data Structures (DSA)', 'Algorithms', 'Matrix Manipulation'],
+    overview: 'A high-performance command-line seat booking and scheduling system. Utilizes advanced algorithms and custom data structures to optimize room layout queries, ticket pricing, and timetable planning.',
+    problem: 'Dynamic seat reservation systems require low-latency verification to prevent double-booking issues under high concurrency, which can quickly degrade database performance.',
+    solution: 'Created a custom matrix layout in C++ utilizing bit-vector representations for seats. This allows O(1) constant-time lookup and update operations per reservation, minimizing processor instruction cycles.',
+    features: [
+      'Interactive seat selection matrix outputted cleanly in console.',
+      'Efficient O(log N) showtime lookup using balanced search trees.',
+      'Custom queue scheduling sorting events by popularity and runtime.',
+      'System diagnostics reports highlighting seat occupancy and total revenue.'
+    ],
+    challenges: 'Preventing memory leaks while handling large collections of showtime nodes dynamically. Addressed by utilizing C++ smart pointers (std::unique_ptr and std::shared_ptr) to ensure robust RAII memory management.',
+    learnings: 'Solidified knowledge of algorithmic time complexity, bit-level manipulations, memory optimization, and custom container designs in C++.',
+    achievement: 'Achieved O(1) seat validation lookup using bitmask arrays.',
+    image: 'img_movie.png'
+  },
+  'plant-disease': {
+    title: 'Plant Disease Classification',
+    role: 'Deep Learning Specialist',
+    timeline: '6 Weeks',
+    github: 'https://github.com/Shaswagupta',
+    demo: '#',
+    techStack: ['TensorFlow', 'Keras', 'Python', 'Transfer Learning', 'ResNet50', 'Matplotlib'],
+    overview: 'An advanced computer vision system designed to classify diseases in crops using state-of-the-art Deep Convolutional Neural Networks. Built on top of pre-trained architectures for optimal accuracy.',
+    problem: 'Training deep models from scratch requires enormous datasets and weeks of compute time. Small datasets often lead to overfitting and poor generalization in real-world environments.',
+    solution: 'Utilized Transfer Learning by taking a ResNet50 model pre-trained on ImageNet. Replaced the top layers with custom dense blocks, freezing core convolutional weights, and fine-tuning the model using a low learning rate.',
+    features: [
+      'Leverages pre-trained ResNet50 weights for quick learning convergence.',
+      'Detailed training metrics output highlighting accuracy curves and confusion matrices.',
+      'Interactive predictions page with image uploading capabilities.',
+      'Automatic feature activation mapping showcasing model focus areas.'
+    ],
+    challenges: 'Fine-tuning deeper layers without destroying general features already learned by ResNet50. Solved by implementing a custom training scheduler that progressively unfroze layers as validation loss converged.',
+    learnings: 'Acquired hands-on experience in transfer learning strategies, custom layer design in Keras, activation visualization, and hyperparameter tuning.',
+    achievement: 'Tuned ResNet50 to achieve 96.5% categorization accuracy in under 15 epochs.',
+    image: 'img_plant.png'
+  },
+  'data-visualization': {
+    title: 'Data Visualization Dashboard',
+    role: 'Front-End Developer',
+    timeline: '4 Weeks',
+    github: 'https://github.com/Shaswagupta',
+    demo: '#',
+    techStack: ['JavaScript', 'HTML5', 'CSS3', 'D3.js', 'REST API', 'JSON'],
+    overview: 'An interactive analytical platform designed to present complex dataset parameters. Incorporates interactive charts, real-time filters, animations, and clean, high-performance rendering.',
+    problem: 'Standard charting libraries struggle to render large, streaming datasets in real-time, resulting in UI freezes and poor user experience.',
+    solution: 'Utilized raw SVG bindings in D3.js and virtual container groupings. Implemented data throttling algorithms in JS to update graph coordinates in batches, maintaining a steady 60 FPS refresh rate.',
+    features: [
+      'Dynamic bar, line, scatter, and pie charts updated in real-time.',
+      'Comprehensive multi-parameter sorting and filtering pipeline.',
+      'Responsive layout scaling charts to match current screen viewport dimensions.',
+      'Custom micro-animations rendering transition states smoothly.'
+    ],
+    challenges: 'Recalculating chart bounds on dynamic window resizing without causing rendering delays. Solved by implementing debounce logic and utilizing CSS viewBox viewport configuration.',
+    learnings: 'Mastered data binding concepts in D3, coordinate math, vector scaling, SVG paths, and JavaScript performance profiling tools.',
+    achievement: 'Rendered over 5,000 active data points smoothly at 60 FPS using D3 dynamic updates.',
+    image: 'img_dashboard.png'
+  }
 };
 
 /* ═══════════════ PARTICLE SYSTEM ═══════════════ */
 (function(){
   const canvas=document.getElementById('particles');
+  if(!canvas) return;
   const ctx=canvas.getContext('2d');
   let w,h,particles=[];
   function resize(){w=canvas.width=window.innerWidth;h=canvas.height=window.innerHeight}
@@ -70,16 +201,23 @@ const CONFIG = {
   cycle();
 })();
 
-/* ═══════════════ NAVBAR SCROLL ═══════════════ */
+/* ═══════════════ NAVBAR SCROLL & ACTIVE LINK UPDATES ═══════════════ */
 (function(){
   const nav=document.getElementById('navbar');
   const links=document.querySelectorAll('.nav-link');
   const sections=document.querySelectorAll('.section');
+  if(!nav) return;
   window.addEventListener('scroll',function(){
     nav.classList.toggle('scrolled',window.scrollY>50);
     let current='';
-    sections.forEach(s=>{if(window.scrollY>=s.offsetTop-200)current=s.getAttribute('id')});
-    links.forEach(l=>{l.classList.toggle('active',l.getAttribute('href')==='#'+current)});
+    sections.forEach(s=>{
+      if(window.scrollY>=s.offsetTop-220) {
+        current=s.getAttribute('id');
+      }
+    });
+    links.forEach(l=>{
+      l.classList.toggle('active', l.getAttribute('href')==='#'+current);
+    });
   });
 })();
 
@@ -87,20 +225,573 @@ const CONFIG = {
 (function(){
   const btn=document.getElementById('hamburger');
   const menu=document.getElementById('navLinks');
-  btn.addEventListener('click',function(){btn.classList.toggle('active');menu.classList.toggle('open')});
-  document.querySelectorAll('.nav-link').forEach(l=>l.addEventListener('click',function(){btn.classList.remove('active');menu.classList.remove('open')}));
+  if(!btn || !menu) return;
+  btn.addEventListener('click',function(){
+    btn.classList.toggle('active');
+    menu.classList.toggle('open');
+  });
+  document.querySelectorAll('.nav-link').forEach(l=>l.addEventListener('click',function(){
+    btn.classList.remove('active');
+    menu.classList.remove('open');
+  }));
 })();
 
-/* ═══════════════ SCROLL ANIMATIONS ═══════════════ */
+/* ═══════════════ INTERSECTION OBSERVER ANIMATIONS ═══════════════ */
 (function(){
-  const observer=new IntersectionObserver(function(entries){entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.15});
+  const observer=new IntersectionObserver(function(entries){
+    entries.forEach(e=>{
+      if(e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  },{threshold:.1});
   document.querySelectorAll('[data-anim]').forEach(el=>observer.observe(el));
 })();
 
-/* ═══════════════ SKILL BAR ANIMATION ═══════════════ */
+/* ═══════════════ INTERACTIVE SKILLS DASHBOARD SYSTEM ═══════════════ */
+const skillsData = {
+  languages: {
+    title: "Programming Languages",
+    desc: "Core languages used for systems programming, data structures, scripting, and backend applications.",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
+    items: [
+      {
+        name: "C++",
+        level: 90,
+        mastery: "Expert",
+        usage: 5,
+        achievement: "Core language for real-time systems; designed multithreaded ticket bookings.",
+        desc: "Primary language for performance-critical systems and low-level development. Deep understanding of memory management, pointer manipulation, and STL data structures.",
+        topics: ["Memory Management", "Pointers & References", "STL", "Templates", "Object-Oriented Programming (OOP)"],
+        projects: ["Bank Management System", "Movie Ticket Booking"]
+      },
+      {
+        name: "JavaScript",
+        level: 85,
+        mastery: "Advanced",
+        usage: 5,
+        achievement: "Engineered single-page application router and custom trailing cursor renderer.",
+        desc: "Engine for interactive frontends and scalable backend servers. Experienced with ES6+, asynchronous programming, closures, and Event Loop internals.",
+        topics: ["ES6+", "Asynchronous JS (Promises, Async/Await)", "DOM Manipulation", "Event Loop", "V8 Engine Internals"],
+        projects: ["E-Commerce Platform", "Data Visualization Dashboard"]
+      },
+      {
+        name: "Python",
+        level: 80,
+        mastery: "Advanced",
+        usage: 4,
+        achievement: "Trained Convolutional Neural Networks achieving 95%+ classification accuracy.",
+        desc: "Language of choice for data scripting, automation, and machine learning models. Skilled in mathematical libraries and scripting pipelines.",
+        topics: ["Data Analysis (Pandas, NumPy)", "File I/O", "Automation Scripts", "TensorFlow & PyTorch", "Flask & FastAPI"],
+        projects: ["Crop Disease Detector", "Plant Disease Classification"]
+      },
+      {
+        name: "SQL",
+        level: 75,
+        mastery: "Proficient",
+        usage: 4,
+        achievement: "Optimized multi-table joins and defined relational schemas for e-commerce stores.",
+        desc: "Relational database querying language. Proficient in database normalization, complex joins, indexing, and transaction safety.",
+        topics: ["Relational Algebra", "Database Joins & Subqueries", "Indexing & Optimization", "ACID Compliance", "Schema Design"],
+        projects: ["E-Commerce Platform"]
+      }
+    ]
+  },
+  webdev: {
+    title: "Web Development",
+    desc: "Technologies and frameworks used to create premium, interactive, and high-performance web applications.",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
+    items: [
+      {
+        name: "HTML5 / CSS3",
+        level: 92,
+        mastery: "Expert",
+        usage: 5,
+        achievement: "Crafted high-fidelity editorial layouts and advanced interactive CSS glassmorphisms.",
+        desc: "Foundational structure and premium styling of modern web applications. Skilled in Flexbox, CSS Grid, custom variables, responsive fluid layouts, and performance optimization.",
+        topics: ["Semantic HTML", "Flexbox & Grid Layouts", "CSS Variables", "Responsive Design", "Transitions & Keyframe Animations"],
+        projects: ["Portfolio Website", "E-Commerce Platform"]
+      },
+      {
+        name: "React.js",
+        level: 82,
+        mastery: "Advanced",
+        usage: 5,
+        achievement: "Built stateful shopping carts and dynamically rendered product catalogs.",
+        desc: "Component-driven frontend library. Proficient in functional components, hooks, custom state management (Context, Redux), and virtual DOM rendering optimization.",
+        topics: ["React Hooks", "Context API & State Management", "Virtual DOM", "Component Lifecycle", "Performance Optimization (useMemo, useCallback)"],
+        projects: ["E-Commerce Platform"]
+      },
+      {
+        name: "Node.js",
+        level: 78,
+        mastery: "Proficient",
+        usage: 4,
+        achievement: "Engineered secure backend APIs handling user authentication and payment intents.",
+        desc: "JavaScript runtime for building scalable server-side applications. Skilled in Express routing, middleware, authentication gates, and REST API design.",
+        topics: ["Express.js Framework", "Middleware Architecture", "Event-Driven Programming", "HTTP Protocols & Security Headers", "npm & Package Management"],
+        projects: ["E-Commerce Platform"]
+      },
+      {
+        name: "REST APIs",
+        level: 85,
+        mastery: "Advanced",
+        usage: 5,
+        achievement: "Integrated Stripe payment gateways and implemented robust token-based authorization.",
+        desc: "Architectural style for designing network applications. Experienced in designing robust endpoints, secure JWT-based auth, payload validation, and HTTP status handling.",
+        topics: ["HTTP Methods & Status Codes", "JWT Authentication", "Payload Validation", "CORS & Security", "API Documentation"],
+        projects: ["E-Commerce Platform", "Data Visualization Dashboard"]
+      }
+    ]
+  },
+  databases: {
+    title: "Databases",
+    desc: "Data persistence systems, query languages, caching layers, and database structure architectures.",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>`,
+    items: [
+      {
+        name: "MongoDB",
+        level: 76,
+        mastery: "Advanced",
+        usage: 4,
+        achievement: "Configured document models and relational population for commerce systems.",
+        desc: "NoSQL document store used for flexible data storage. Experienced with Mongoose schemas, aggregation pipelines, validation, and database connections.",
+        topics: ["BSON Document Storage", "Mongoose Schemas", "Aggregation Pipelines", "Indexing", "Database Connections"],
+        projects: ["E-Commerce Platform"]
+      },
+      {
+        name: "PostgreSQL",
+        level: 70,
+        mastery: "Proficient",
+        usage: 3,
+        achievement: "Designed normalized schemas and constraints ensuring data integrity.",
+        desc: "Advanced relational database system. Skilled in structural design, indexing, foreign keys, transaction handling, and SQL queries.",
+        topics: ["Relational Schemas", "Foreign Key Constraints", "JSONB Support", "Views & Triggers", "Complex Queries"],
+        projects: ["E-Commerce Platform"]
+      },
+      {
+        name: "MySQL",
+        level: 80,
+        mastery: "Advanced",
+        usage: 4,
+        achievement: "Maintained transactional safety for system files and structured banking metrics.",
+        desc: "Widely used open-source relational database. Competent in building structured tables, executing queries, optimizing slow operations, and schema administration.",
+        topics: ["Relational Modeling", "Joins & Subqueries", "Database Indexing", "User Privileges", "Backup & Recovery"],
+        projects: ["Bank Management System"]
+      },
+      {
+        name: "Redis",
+        level: 60,
+        mastery: "Proficient",
+        usage: 3,
+        achievement: "Deployed session stores with automatic expiration to optimize response speeds.",
+        desc: "In-memory key-value database used for caching and lightning-fast session storage. Experienced in basic operations and key expiration structures.",
+        topics: ["In-Memory Storage", "Caching Strategies", "Key Expiration", "Data Types (Strings, Hashes, Lists)", "Session Management"],
+        projects: ["E-Commerce Platform"]
+      }
+    ]
+  },
+  tools: {
+    title: "Tools & Platforms",
+    desc: "Modern development toolchains, containerization tools, code versioning pipelines, and visual layout frameworks.",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>`,
+    items: [
+      {
+        name: "Git / GitHub",
+        level: 88,
+        mastery: "Expert",
+        usage: 5,
+        achievement: "Managed code reviews, complex merges, and automated site deployments.",
+        desc: "Distributed version control system. Skilled in branching strategies, merge conflict resolution, pull requests, commits, and collaborative repository workflows.",
+        topics: ["Branching & Merging", "Conflict Resolution", "Git Rebase & Cherry-Pick", "GitHub Actions & CI/CD", "Pull Request Workflows"],
+        projects: ["All Projects"]
+      },
+      {
+        name: "Docker",
+        level: 70,
+        mastery: "Proficient",
+        usage: 3,
+        achievement: "Containerized multi-container Web apps for consistent local environments.",
+        desc: "Containerization platform to build and ship applications. Familiar with writing Dockerfiles, defining compose networks, managing volumes, and deploying isolated stacks.",
+        topics: ["Dockerfiles", "Docker Compose", "Container Networking", "Volume Persistence", "Image Optimization"],
+        projects: ["E-Commerce Platform"]
+      },
+      {
+        name: "VS Code",
+        level: 95,
+        mastery: "Expert",
+        usage: 5,
+        achievement: "Customized hotkeys, macro scripts, and workspaces to speed up building.",
+        desc: "Preferred IDE for development. Highly customized with performance configurations, keybindings, debugging tools, and system terminal integrations.",
+        topics: ["Integrated Debugging", "Extension Customization", "Task Automation", "Git Integration", "Multi-root Workspaces"],
+        projects: ["All Projects"]
+      },
+      {
+        name: "Figma / UI Design",
+        level: 75,
+        mastery: "Advanced",
+        usage: 4,
+        achievement: "Modeled portfolio layouts, grids, color tokens, and responsive mockups.",
+        desc: "Collaborative interface design tool. Skilled in wireframing, layout systems, component variants, auto-layout, prototyping, and establishing design tokens.",
+        topics: ["Auto-Layout", "Component Library Systems", "Interactive Prototyping", "Design System Tokens", "Vector Layouts"],
+        projects: ["Portfolio Website"]
+      }
+    ]
+  },
+  aicore: {
+    title: "AI/ML & Core CS",
+    desc: "Academic algorithms, software models, neural networks, object layouts, and general programming philosophies.",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`,
+    items: [
+      {
+        name: "AI / ML Concepts",
+        level: 75,
+        mastery: "Advanced",
+        usage: 4,
+        achievement: "Applied transfer learning to ResNet architectures for crop health analysis.",
+        desc: "Core concepts of artificial intelligence and machine learning. Experienced in neural networks, computer vision, data preparation, and training deep learning models.",
+        topics: ["Supervised Learning", "Neural Network Layers", "Convolutional Neural Networks (CNN)", "Model Tuning & Regularization", "Computer Vision Fundamentals"],
+        projects: ["Crop Disease Detector", "Plant Disease Classification"]
+      },
+      {
+        name: "Data Structures (DSA)",
+        level: 88,
+        mastery: "Advanced",
+        usage: 5,
+        achievement: "Solved complex algorithmic problems with optimized time/space bounds.",
+        desc: "Foundational concepts for writing efficient logic. Proficient in binary search, trees, sorting algorithms, graphs, hash tables, and big-O analysis.",
+        topics: ["Linked Lists & Stacks", "Trees & Graphs", "Sorting & Searching Algorithms", "Big-O Notation", "Dynamic Programming"],
+        projects: ["Movie Ticket Booking", "Bank Management System"]
+      },
+      {
+        name: "Object-Oriented Programming (OOP)",
+        level: 90,
+        mastery: "Expert",
+        usage: 5,
+        achievement: "Designed modular banking system adhering to clean RAII and encapsulation.",
+        desc: "Software design paradigm centering around objects. Expert in abstraction, encapsulation, inheritance, polymorphism, design patterns, and solid design principles.",
+        topics: ["Abstraction & Encapsulation", "Inheritance & Polymorphism", "SOLID Design Principles", "Design Patterns", "RAII Memory Management"],
+        projects: ["Bank Management System", "Movie Ticket Booking"]
+      },
+      {
+        name: "Software Engineering Principles",
+        level: 82,
+        mastery: "Advanced",
+        usage: 5,
+        achievement: "Ensured high coverage via unit tests and adhered to clean modular architectures.",
+        desc: "Methodology of building software in teams. Practiced in test-driven development, modular architecture, code readability, dry principles, and security gates.",
+        topics: ["TDD & Unit Testing", "DRY & KISS Principles", "Modular Code Design", "Secure Coding Practices", "Documentation & Architecture"],
+        projects: ["All Projects"]
+      }
+    ]
+  }
+};
+
 (function(){
-  const observer=new IntersectionObserver(function(entries){entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.skill-fill').forEach(bar=>{const level=bar.getAttribute('data-level');bar.style.setProperty('--level',level+'%');bar.classList.add('animated');bar.style.width=level+'%'})}})},{threshold:.3});
-  document.querySelectorAll('.skill-card').forEach(c=>observer.observe(c));
+  const skillsTabs = document.getElementById('skillsTabs');
+  const currentCategoryTitle = document.getElementById('currentCategoryTitle');
+  const currentCategoryDesc = document.getElementById('currentCategoryDesc');
+  const skillsListContainer = document.getElementById('skillsListContainer');
+  const skillDetailPane = document.getElementById('skillDetailPane');
+
+  if (!skillsTabs || !skillsListContainer || !skillDetailPane) return;
+
+  let activeCategoryKey = 'languages';
+  let activeSkillIndex = 0;
+
+  // Project Scroll & Highlight Trigger
+  function highlightProject(projectName) {
+    // Check ifprojectName is "All Projects"
+    if (projectName === "All Projects") {
+      const section = document.getElementById('projects');
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      return;
+    }
+
+    const cards = document.querySelectorAll('.project-card');
+    let targetCard = null;
+
+    cards.forEach(card => {
+      const titleEl = card.querySelector('h3');
+      if (titleEl && titleEl.textContent.trim().toLowerCase() === projectName.trim().toLowerCase()) {
+        targetCard = card;
+      }
+    });
+
+    if (targetCard) {
+      targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      targetCard.classList.add('project-highlight-pulse');
+      setTimeout(() => {
+        targetCard.classList.remove('project-highlight-pulse');
+      }, 2300);
+    } else {
+      // Fallback: scroll to projects section
+      const section = document.getElementById('projects');
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  }
+
+  // Render Category Tabs
+  function renderTabs() {
+    skillsTabs.innerHTML = '';
+    Object.keys(skillsData).forEach(key => {
+      const cat = skillsData[key];
+      const btn = document.createElement('button');
+      btn.className = `skill-tab-btn ${key === activeCategoryKey ? 'active' : ''}`;
+      btn.innerHTML = `${cat.icon}<span>${cat.title}</span>`;
+      btn.addEventListener('click', () => selectCategory(key));
+      skillsTabs.appendChild(btn);
+    });
+  }
+
+  // Handle Category Selection
+  function selectCategory(key) {
+    if (activeCategoryKey === key) return;
+    activeCategoryKey = key;
+    activeSkillIndex = 0;
+    
+    // Update Tab UI
+    document.querySelectorAll('.skill-tab-btn').forEach(btn => btn.classList.remove('active'));
+    renderTabs();
+    
+    // Update Header
+    currentCategoryTitle.textContent = skillsData[key].title;
+    currentCategoryDesc.textContent = skillsData[key].desc;
+    
+    // Render Skills List and detail pane
+    renderSkillsList();
+    updateSkillDetail();
+  }
+
+  // Render Left Skills List
+  function renderSkillsList() {
+    skillsListContainer.innerHTML = '';
+    const skills = skillsData[activeCategoryKey].items;
+    
+    skills.forEach((skill, index) => {
+      const item = document.createElement('div');
+      item.className = `skill-dashboard-item ${index === activeSkillIndex ? 'active' : ''}`;
+      item.style.setProperty('--i', index); // Set custom property for stagger delay
+      item.innerHTML = `
+        <div class="skill-item-info">
+          <span class="skill-item-name">${skill.name}</span>
+          <div class="skill-item-mini-bar">
+            <div class="skill-item-mini-fill" style="width: ${skill.level}%"></div>
+          </div>
+        </div>
+        <span class="skill-item-val">${skill.level}%</span>
+      `;
+      item.addEventListener('click', () => selectSkill(index));
+      skillsListContainer.appendChild(item);
+    });
+  }
+
+  // Handle Skill Selection
+  function selectSkill(index) {
+    if (activeSkillIndex === index) return;
+    activeSkillIndex = index;
+    
+    // Update active row class
+    document.querySelectorAll('.skill-dashboard-item').forEach((item, idx) => {
+      if (idx === index) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    });
+
+    updateSkillDetail();
+  }
+
+  // Update Detail Panel on Right
+  function updateSkillDetail() {
+    const skill = skillsData[activeCategoryKey].items[activeSkillIndex];
+    
+    // Add switching effect (fade)
+    skillDetailPane.classList.add('switching');
+    
+    setTimeout(() => {
+      // Calculate SVG stroke offset: circumference is 2 * PI * r = 2 * 3.14159 * 70 = 439.82
+      const radius = 70;
+      const circumference = 2 * Math.PI * radius;
+      const offset = circumference - (skill.level / 100) * circumference;
+
+      // Construct usage rating dots
+      let dotsHTML = '';
+      for (let i = 1; i <= 5; i++) {
+        dotsHTML += `<div class="usage-dot ${i <= skill.usage ? 'active' : ''}"></div>`;
+      }
+
+      // Construct project links
+      const projectPills = skill.projects.map(proj => {
+        return `<a href="#projects" class="project-pill" data-project-target="${proj}">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+          ${proj}
+        </a>`;
+      }).join(' ');
+
+      const topicsHTML = skill.topics.map(topic => `<span class="skill-detail-tag">${topic}</span>`).join('');
+
+      skillDetailPane.innerHTML = `
+        <div class="radial-progress-wrapper">
+          <svg class="radial-progress-svg" viewBox="0 0 160 160">
+            <circle class="radial-track" cx="80" cy="80" r="70" />
+            <circle class="radial-fill" cx="80" cy="80" r="70" style="stroke-dasharray: ${circumference}; stroke-dashoffset: ${circumference};" />
+          </svg>
+          <div class="radial-value-text">
+            <span>${skill.level}</span>
+            <span class="radial-value-percent">%</span>
+          </div>
+        </div>
+        
+        <div class="skill-mastery-badge">${skill.mastery}</div>
+        
+        <div class="skill-detail-body">
+          <h3 class="skill-detail-title font-serif">${skill.name}</h3>
+          <p class="skill-detail-desc">${skill.desc}</p>
+          
+          <div class="skill-detail-meta-row">
+            <span>Usage Frequency</span>
+            <div class="skill-usage-dots">
+              ${dotsHTML}
+            </div>
+          </div>
+
+          <p class="skill-detail-desc" style="font-style: italic; font-size: 0.85rem; color: var(--primary); margin-top: -10px; margin-bottom: 20px; border-left: 2px solid var(--primary); padding-left: 10px; text-align: left; max-width: 100%;">
+            "${skill.achievement}"
+          </p>
+          
+          <div class="skill-detail-section">
+            <h4>Key Concepts & Topics</h4>
+            <div class="skill-detail-tags">
+              ${topicsHTML}
+            </div>
+          </div>
+          
+          <div class="skill-detail-section">
+            <h4>Featured In Projects</h4>
+            <div class="skill-detail-tags">
+              ${projectPills}
+            </div>
+          </div>
+        </div>
+      `;
+
+      // Set up click handlers for project pills
+      skillDetailPane.querySelectorAll('[data-project-target]').forEach(link => {
+        link.addEventListener('click', (ev) => {
+          ev.preventDefault();
+          const targetProject = link.getAttribute('data-project-target');
+          highlightProject(targetProject);
+        });
+      });
+
+      // Trigger drawing animation in next tick
+      setTimeout(() => {
+        const fill = skillDetailPane.querySelector('.radial-fill');
+        if (fill) {
+          fill.style.strokeDashoffset = offset;
+        }
+      }, 50);
+
+      skillDetailPane.classList.remove('switching');
+    }, 150);
+  }
+
+  // Initialize
+  renderTabs();
+  renderSkillsList();
+  updateSkillDetail();
+})();
+
+
+/* ═══════════════ CASE STUDY OVERLAY ROUTING SYSTEM ═══════════════ */
+(function(){
+  const overlay = document.getElementById('caseStudyOverlay');
+  const closeBtn = document.getElementById('closeCaseStudyBtn');
+  
+  if (!overlay) return;
+
+  function showCaseStudy(p) {
+    document.getElementById('caseStudyTitle').textContent = p.title;
+    document.getElementById('caseStudyMeta').innerHTML = `
+      <span><strong>Role:</strong> ${p.role}</span>
+      <span><strong>Timeline:</strong> ${p.timeline}</span>
+    `;
+    
+    // Tech stack
+    const techContainer = document.getElementById('caseStudyTechStack');
+    techContainer.innerHTML = p.techStack.map(tag => `<span>${tag}</span>`).join('');
+    
+    // Content sections
+    document.getElementById('caseStudyOverview').textContent = p.overview;
+    document.getElementById('caseStudyProblem').textContent = p.problem;
+    document.getElementById('caseStudySolution').textContent = p.solution;
+    document.getElementById('caseStudyChallenges').textContent = p.challenges;
+    document.getElementById('caseStudyLearnings').textContent = p.learnings;
+    document.getElementById('caseStudyAchievement').textContent = p.achievement;
+    
+    // Links
+    document.getElementById('caseStudyGithub').href = p.github;
+    document.getElementById('caseStudyDemo').href = p.demo;
+    
+    // Image
+    const imgEl = document.getElementById('caseStudyImage');
+    imgEl.src = p.image;
+    imgEl.alt = p.title;
+    
+    // Features list
+    const featuresList = document.getElementById('caseStudyFeatures');
+    featuresList.innerHTML = p.features.map(f => `<li>${f}</li>`).join('');
+    
+    // Open panel
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  
+  function hideCaseStudy() {
+    overlay.classList.remove('open');
+    // Restore body scroll only if admin dashboard is closed
+    if (!document.getElementById('adminModal').classList.contains('open')) {
+      document.body.style.overflow = '';
+    }
+  }
+
+  function handleRouting() {
+    const hash = window.location.hash;
+    const prefix = '#project-';
+    if (hash.startsWith(prefix)) {
+      const key = hash.substring(prefix.length);
+      const project = caseStudies[key];
+      if (project) {
+        showCaseStudy(project);
+      } else {
+        hideCaseStudy();
+      }
+    } else {
+      hideCaseStudy();
+    }
+  }
+
+  window.addEventListener('hashchange', handleRouting);
+  window.addEventListener('load', handleRouting);
+
+  // Close handlers
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      window.location.hash = '';
+    });
+  }
+  
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      window.location.hash = '';
+    }
+  });
 })();
 
 /* ═══════════════ CONTACT FORM & DATA STORAGE ═══════════════ */
@@ -142,6 +833,7 @@ const DataStore = {
 (function(){
   const form=document.getElementById('contactForm');
   const success=document.getElementById('formSuccess');
+  if(!form) return;
   form.addEventListener('submit', async function(e){
     e.preventDefault();
     const name=document.getElementById('nameInput').value.trim();
@@ -209,27 +901,30 @@ const DataStore = {
 const AdminDashboard = {
   selectedId: null,
   init() {
-    // Open hooks
     const trigger = document.getElementById('adminTrigger');
     const closeBtn = document.getElementById('closeAdminBtn');
     const modal = document.getElementById('adminModal');
     const logo = document.getElementById('navLogo');
     
+    if(!modal) return;
+
     let logoClicks = 0;
     let logoClickTimer;
-    logo.addEventListener('click', (e) => {
-      logoClicks++;
-      clearTimeout(logoClickTimer);
-      logoClickTimer = setTimeout(() => { logoClicks = 0; }, 2000);
-      if (logoClicks >= 5) {
-        e.preventDefault();
-        logoClicks = 0;
-        this.open();
-      }
-    });
+    if (logo) {
+      logo.addEventListener('click', (e) => {
+        logoClicks++;
+        clearTimeout(logoClickTimer);
+        logoClickTimer = setTimeout(() => { logoClicks = 0; }, 2000);
+        if (logoClicks >= 5) {
+          e.preventDefault();
+          logoClicks = 0;
+          this.open();
+        }
+      });
+    }
 
-    trigger.addEventListener('click', () => this.open());
-    closeBtn.addEventListener('click', () => this.close());
+    if (trigger) trigger.addEventListener('click', () => this.open());
+    if (closeBtn) closeBtn.addEventListener('click', () => this.close());
     
     // Keyboard listener for typing "admin"
     let typed = '';
@@ -249,26 +944,89 @@ const AdminDashboard = {
     }
 
     // Modal listeners
-    document.getElementById('adminSearchInput').addEventListener('input', () => this.render());
-    document.getElementById('adminStatusFilter').addEventListener('change', () => this.render());
-    document.getElementById('clearAllBtn').addEventListener('click', () => this.clearAll());
-    document.getElementById('exportCsvBtn').addEventListener('click', () => this.exportCSV());
+    const searchInput = document.getElementById('adminSearchInput');
+    const filterSelect = document.getElementById('adminStatusFilter');
+    const clearBtn = document.getElementById('clearAllBtn');
+    const exportBtn = document.getElementById('exportCsvBtn');
+
+    if (searchInput) searchInput.addEventListener('input', () => this.render());
+    if (filterSelect) filterSelect.addEventListener('change', () => this.render());
+    if (clearBtn) clearBtn.addEventListener('click', () => this.clearAll());
+    if (exportBtn) exportBtn.addEventListener('click', () => this.exportCSV());
 
     // Detail Modal Close
-    document.getElementById('closeDetailBtn').addEventListener('click', () => this.closeDetail());
-    document.getElementById('markReadBtn').addEventListener('click', () => this.toggleReadStatus());
-    document.getElementById('deleteDetailBtn').addEventListener('click', () => this.deleteDetail());
+    const closeDetail = document.getElementById('closeDetailBtn');
+    const markRead = document.getElementById('markReadBtn');
+    const deleteDetail = document.getElementById('deleteDetailBtn');
+
+    if (closeDetail) closeDetail.addEventListener('click', () => this.closeDetail());
+    if (markRead) markRead.addEventListener('click', () => this.toggleReadStatus());
+    if (deleteDetail) deleteDetail.addEventListener('click', () => this.deleteDetail());
+
+    // Passcode gate form handlers
+    const passcodeForm = document.getElementById('adminPasscodeForm');
+    const passcodeField = document.getElementById('adminPasscodeField');
+    const passcodeError = document.getElementById('passcodeError');
+    const closePasscodeBtn = document.getElementById('closePasscodeBtn');
+
+    if (passcodeForm) {
+      passcodeForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const val = passcodeField.value;
+        if (val === CONFIG.ADMIN_PASSCODE) {
+          sessionStorage.setItem('admin_verified', 'true');
+          passcodeField.value = '';
+          if (passcodeError) passcodeError.style.display = 'none';
+          document.getElementById('adminPasscodeScreen').style.display = 'none';
+          document.getElementById('adminModalContainer').style.display = 'flex';
+          this.render();
+        } else {
+          if (passcodeError) passcodeError.style.display = 'block';
+        }
+      });
+    }
+
+    if (closePasscodeBtn) {
+      closePasscodeBtn.addEventListener('click', () => this.close());
+    }
+
+    // Backdrop click close
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        this.close();
+      }
+    });
   },
 
   open() {
+    const isVerified = sessionStorage.getItem('admin_verified') === 'true';
+    const passcodeScreen = document.getElementById('adminPasscodeScreen');
+    const modalContainer = document.getElementById('adminModalContainer');
+    const passcodeField = document.getElementById('adminPasscodeField');
+    const passcodeError = document.getElementById('passcodeError');
+
+    if (passcodeField) passcodeField.value = '';
+    if (passcodeError) passcodeError.style.display = 'none';
+
+    if (isVerified) {
+      if (passcodeScreen) passcodeScreen.style.display = 'none';
+      if (modalContainer) modalContainer.style.display = 'flex';
+      this.render();
+    } else {
+      if (passcodeScreen) passcodeScreen.style.display = 'flex';
+      if (modalContainer) modalContainer.style.display = 'none';
+    }
+
     document.getElementById('adminModal').classList.add('open');
     document.body.style.overflow = 'hidden';
-    this.render();
   },
 
   close() {
     document.getElementById('adminModal').classList.remove('open');
-    document.body.style.overflow = '';
+    // Only restore body overflow if case study panel is not open
+    if (!document.getElementById('caseStudyOverlay').classList.contains('open')) {
+      document.body.style.overflow = '';
+    }
   },
 
   render() {
@@ -276,7 +1034,6 @@ const AdminDashboard = {
     const query = document.getElementById('adminSearchInput').value.toLowerCase().trim();
     const statusFilter = document.getElementById('adminStatusFilter').value;
 
-    // Filter
     const filtered = list.filter(item => {
       const matchesSearch = item.name.toLowerCase().includes(query) || 
                             item.email.toLowerCase().includes(query) || 
@@ -353,9 +1110,6 @@ const AdminDashboard = {
     document.getElementById('detailMessage').textContent = item.message;
     
     document.getElementById('markReadBtn').textContent = 'Mark as Unread';
-    document.getElementById('markReadBtn').style.background = 'rgba(255, 255, 255, 0.05)';
-    document.getElementById('markReadBtn').style.border = '1px solid rgba(255, 255, 255, 0.1)';
-    document.getElementById('markReadBtn').style.color = 'var(--text)';
 
     document.getElementById('detailModal').classList.add('open');
   },
@@ -450,10 +1204,9 @@ const AdminDashboard = {
   }
 };
 
-// Expose render callback globally so contact form can trigger it
 window.renderAdminData = () => AdminDashboard.render();
 
-// Initialize Admin
+// Initialize Admin Dashboard
 document.addEventListener('DOMContentLoaded', () => {
   AdminDashboard.init();
 });
@@ -462,18 +1215,18 @@ document.addEventListener('DOMContentLoaded', () => {
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',function(e){
     const href = this.getAttribute('href');
-    if (href === '#') return;
+    if (href === '#' || href.startsWith('#project-')) return;
     e.preventDefault();
     try {
       const target=document.querySelector(href);
-      if(target)target.scrollIntoView({behavior:'smooth'});
+      if(target) target.scrollIntoView({behavior:'smooth'});
     } catch(err) {
       console.error('Smooth scroll error:', err);
     }
   });
 });
 
-/* ═══════════════ CUSTOM CURSOR ANIMATION ═══════════════ */
+/* ═══════════════ CUSTOM LERP CURSOR ANIMATION ═══════════════ */
 document.addEventListener('DOMContentLoaded', () => {
   const cursorDot = document.querySelector('.custom-cursor-dot');
   const cursorOutline = document.querySelector('.custom-cursor-outline');
@@ -484,15 +1237,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let outlineX = 0, outlineY = 0;
     let isVisible = false;
     
-    const LERP_DOT = 0.35;
-    const LERP_OUTLINE = 0.12;
+    const LERP_DOT = 0.85;      // Make the dot follow almost instantly
+    const LERP_OUTLINE = 0.35;  // Make the outer ring track much faster while keeping smoothness
     
     window.addEventListener('mousemove', function(e) {
       targetX = e.clientX;
       targetY = e.clientY;
       
       if (!isVisible) {
-        // Snaps positions instantly on first move to prevent starting from top-left (0,0)
         dotX = targetX;
         dotY = targetY;
         outlineX = targetX;
@@ -510,17 +1262,14 @@ document.addEventListener('DOMContentLoaded', () => {
       isVisible = false;
     });
     
-    // Inertia physics animation loop using LERP
     function renderCursor() {
       if (isVisible) {
-        // LERP Math: current += (target - current) * speedFactor
         dotX += (targetX - dotX) * LERP_DOT;
         dotY += (targetY - dotY) * LERP_DOT;
         
         outlineX += (targetX - outlineX) * LERP_OUTLINE;
         outlineY += (targetY - outlineY) * LERP_OUTLINE;
         
-        // Push transforms to GPU compositor thread
         cursorDot.style.transform = `translate3d(${dotX}px, ${dotY}px, 0) translate(-50%, -50%)`;
         cursorOutline.style.transform = `translate3d(${outlineX}px, ${outlineY}px, 0) translate(-50%, -50%)`;
       }
@@ -528,19 +1277,80 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     requestAnimationFrame(renderCursor);
     
-    // Scale outline and shrink dot on interactive hovers
-    const hoverSelectors = 'a, button, .glass-card, input, textarea, select, .hamburger, .social-link';
-    const hoverElements = document.querySelectorAll(hoverSelectors);
-    
-    hoverElements.forEach(el => {
-      el.addEventListener('mouseenter', function() {
+    // Robust delegation-based hover detection for custom cursor
+    document.addEventListener('mouseover', (e) => {
+      const interactive = e.target.closest('a, button, input, textarea, select, .glass-card, .hamburger, .contact-action-card, .timeline-content, .case-study-btn');
+      if (interactive) {
         cursorDot.classList.add('hovered');
         cursorOutline.classList.add('hovered');
-      });
-      el.addEventListener('mouseleave', function() {
-        cursorDot.classList.remove('hovered');
-        cursorOutline.classList.remove('hovered');
-      });
+      }
+    });
+    
+    document.addEventListener('mouseout', (e) => {
+      const interactive = e.target.closest('a, button, input, textarea, select, .glass-card, .hamburger, .contact-action-card, .timeline-content, .case-study-btn');
+      if (interactive) {
+        if (!e.relatedTarget || !e.relatedTarget.closest('a, button, input, textarea, select, .glass-card, .hamburger, .contact-action-card, .timeline-content, .case-study-btn')) {
+          cursorDot.classList.remove('hovered');
+          cursorOutline.classList.remove('hovered');
+        }
+      }
     });
   }
 });
+
+/* ═══════════════ ABOUT ME INTERACTIVE PORTRAIT ANIMATION ═══════════════ */
+(function(){
+  const container = document.getElementById('aboutPortraitContainer');
+  const img = document.getElementById('aboutPortraitImg');
+  const glow = document.getElementById('aboutPortraitGlow');
+  const shine = document.getElementById('aboutPortraitShine');
+  
+  if (!container) return;
+  
+  let width = container.offsetWidth;
+  let height = container.offsetHeight;
+  
+  window.addEventListener('resize', () => {
+    width = container.offsetWidth;
+    height = container.offsetHeight;
+  });
+  
+  container.addEventListener('mousemove', (e) => {
+    const rect = container.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    // Set custom properties for shine gradient
+    const percentX = (x / width) * 100;
+    const percentY = (y / height) * 100;
+    shine.style.setProperty('--mouse-x', `${percentX}%`);
+    shine.style.setProperty('--mouse-y', `${percentY}%`);
+    
+    // Calculate rotation values (Max 12 degrees)
+    const rotateY = ((x - width / 2) / (width / 2)) * 12;
+    const rotateX = -((y - height / 2) / (height / 2)) * 12;
+    
+    container.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    
+    // Parallax movement inside
+    if (img) {
+      const moveX = -((x - width / 2) / (width / 2)) * 10;
+      const moveY = -((y - height / 2) / (height / 2)) * 10;
+      img.style.transform = `scale(1.08) translate3d(${moveX}px, ${moveY}px, 0)`;
+    }
+    
+    if (glow) {
+      const moveX = ((x - width / 2) / (width / 2)) * 15;
+      const moveY = ((y - height / 2) / (height / 2)) * 15;
+      glow.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
+    }
+  });
+  
+  container.addEventListener('mouseleave', () => {
+    container.style.transform = 'rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+    if (img) img.style.transform = 'scale(1.02) translate3d(0px, 0px, 0px)';
+    if (glow) glow.style.transform = 'translate3d(0px, 0px, 0px)';
+    shine.style.setProperty('--mouse-x', '50%');
+    shine.style.setProperty('--mouse-y', '50%');
+  });
+})();
