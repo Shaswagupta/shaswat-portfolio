@@ -1542,6 +1542,28 @@ body {
   filter: blur(0.5px);
   pointer-events: none;
 }
+.timeline-year-bubble {
+  position: absolute;
+  bottom: -15px;
+  left: 14px;
+  background: rgba(11, 13, 16, 0.85);
+  border: 1px solid rgba(223, 197, 159, 0.4);
+  color: var(--primary);
+  font-family: var(--font);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4), var(--glow-gold);
+  white-space: nowrap;
+  pointer-events: none;
+  transform: translateY(50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 100;
+}
 .timeline-item {
   display: flex;
   justify-content: flex-end;
@@ -1604,11 +1626,25 @@ body {
   border-color: #fff;
   transform: scale(1.25);
 }
+@keyframes activeBorderSweep {
+  0% {
+    border-color: rgba(223, 197, 159, 0.15);
+    box-shadow: 0 10px 30px rgba(11, 13, 16, 0.2), 0 0 0 rgba(223, 197, 159, 0);
+  }
+  50% {
+    border-color: rgba(223, 197, 159, 0.5);
+    box-shadow: 0 10px 30px rgba(11, 13, 16, 0.25), 0 0 15px rgba(223, 197, 159, 0.15);
+  }
+  100% {
+    border-color: rgba(223, 197, 159, 0.25);
+    box-shadow: 0 10px 30px rgba(11, 13, 16, 0.2), 0 0 10px rgba(223, 197, 159, 0.05);
+  }
+}
 .timeline-item.active .timeline-content {
-  border-color: rgba(223, 197, 159, 0.25);
-  box-shadow: 0 10px 30px rgba(11, 13, 16, 0.25);
+  animation: activeBorderSweep 3.0s infinite alternate;
 }
 .timeline-content {
+  position: relative;
   width: 90%;
   padding: 30px;
   border-radius: 20px;
@@ -1618,6 +1654,34 @@ body {
               border-color 0.5s ease, 
               box-shadow 0.5s ease;
   transform-style: preserve-3d;
+}
+/* Mouseglow Border spotlight for timeline cards */
+.timeline-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(
+    250px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(223, 197, 159, 0.25),
+    transparent 50%
+  );
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 2;
+}
+.timeline-content:hover::before {
+  opacity: 1;
 }
 .timeline-content > * {
   transform: translateZ(25px);

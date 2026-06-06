@@ -646,18 +646,51 @@ const caseStudies = {
       let percent = (entryY / rect.height) * 100;
       percent = Math.max(0, Math.min(100, percent));
       progressThread.style.height = `${percent}%`;
+
+      // Show/hide year bubble dynamically based on progress
+      const yearBubble = timelineContainer.querySelector('.timeline-year-bubble');
+      if (yearBubble) {
+        if (percent > 0.5 && percent < 99.5) {
+          yearBubble.style.opacity = '1';
+        } else {
+          yearBubble.style.opacity = '0';
+        }
+      }
       
       // Activate milestones as they enter scroll threshold (e.g. above 70% of viewport height)
+      let currentYear = "2023";
       timelineItems.forEach(item => {
         const itemRect = item.getBoundingClientRect();
         if (itemRect.top < viewportHeight * 0.7) {
           item.classList.add('active');
+          const dateEl = item.querySelector('.timeline-date');
+          if (dateEl) {
+            const matches = dateEl.textContent.trim().match(/\d{4}/);
+            if (matches) {
+              currentYear = matches[0];
+            }
+          }
         } else {
           item.classList.remove('active');
         }
       });
+
+      if (yearBubble && percent > 0.5) {
+        yearBubble.textContent = currentYear;
+      }
     }
   }
+
+  // Timeline Cards mouse glow effect
+  document.querySelectorAll('.timeline-content').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mx', `${x}px`);
+      card.style.setProperty('--my', `${y}px`);
+    });
+  });
 
   window.addEventListener('scroll', function() {
     if (!ticking) {
