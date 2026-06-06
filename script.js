@@ -1,8 +1,19 @@
 const CONFIG = {
   // Web3Forms Access Key for silent background email submission.
   WEB3FORMS_ACCESS_KEY: 'e795c05e-f999-456f-8cb6-ca323e2d6f88',
-  ADMIN_PASSCODE: 'admin'
+  ADMIN_PASSCODE: 'admin',
+  // Optional: EmailJS configuration for free confirmation auto-reply to senders.
+  EMAILJS_SERVICE_ID: 'service_wvadgum',
+  EMAILJS_TEMPLATE_ID: 'template_ujxpbls',
+  EMAILJS_PUBLIC_KEY: 'GuXb5UGvY4zXFFm1I'
 };
+
+// Initialize EmailJS if credentials are provided
+if (typeof emailjs !== 'undefined' && CONFIG.EMAILJS_PUBLIC_KEY && CONFIG.EMAILJS_PUBLIC_KEY !== 'YOUR_EMAILJS_PUBLIC_KEY') {
+  emailjs.init({
+    publicKey: CONFIG.EMAILJS_PUBLIC_KEY,
+  });
+}
 
 /* ═══════════════ PROJECT CASE STUDIES DATABASE ═══════════════ */
 const caseStudies = {
@@ -199,6 +210,389 @@ const caseStudies = {
     }, 3000);
   }
   cycle();
+})();
+
+/* ═══════════════ HERO VISUAL INTERACTIVE 3D HOLOGRAPHIC GLOBE & SPACE-TIME GRID ═══════════════ */
+(function(){
+  const grid = document.querySelector('.interactive-glow-grid');
+  const canvas = document.getElementById('heroGridCanvas');
+  if (!grid || !canvas) return;
+  
+  const ctx = canvas.getContext('2d');
+  const dpr = window.devicePixelRatio || 1;
+  const sizeCSS = 540;
+  
+  canvas.width = sizeCSS * dpr;
+  canvas.height = sizeCSS * dpr;
+  ctx.scale(dpr, dpr);
+  
+  // 1. Grid Lines setup (space-time fabric background)
+  const lines = [];
+  const verticalX = [175, 270, 365];
+  verticalX.forEach(xBase => {
+    const points = [];
+    for (let y = 40; y <= 500; y += 12) {
+      points.push({ xBase: xBase, yBase: y, x: xBase, y: y });
+    }
+    lines.push({ type: 'vertical', points: points });
+  });
+  
+  const horizontalY = [175, 270, 365];
+  horizontalY.forEach(yBase => {
+    const points = [];
+    for (let x = 40; x <= 500; x += 12) {
+      points.push({ xBase: x, yBase: yBase, x: x, y: yBase });
+    }
+    lines.push({ type: 'horizontal', points: points });
+  });
+  
+  // 2. 3D Globe particles setup (Fibonacci Lattice with Spring Physics)
+  const spherePoints = [];
+  const spherePointCount = 95;
+  const centerX = 270;
+  const centerY = 270;
+  
+  // Spring Radius properties
+  let radiusVel = 0;
+  let currentRadius = 115;
+  let targetRadius = 115;
+  const normalRadius = 115;
+  const hoverRadius = 135;
+  
+  for (let i = 0; i < spherePointCount; i++) {
+    const phi = Math.acos(1 - 2 * (i + 0.5) / spherePointCount);
+    const theta = Math.PI * (1 + Math.sqrt(5)) * (i + 0.5);
+    
+    // Store as unit coordinates on a 1px radius sphere surface
+    spherePoints.push({
+      xBase: Math.cos(theta) * Math.sin(phi),
+      yBase: Math.sin(theta) * Math.sin(phi),
+      zBase: Math.cos(phi),
+      // Current animated 3D coordinates
+      x: 0, y: 0, z: 0,
+      // Displacement offset for hover ripples
+      dx: 0, dy: 0, dz: 0,
+      // Projected 2D coordinates
+      projX: 0, projY: 0, projScale: 1
+    });
+  }
+  
+  // Liquid Mercury Droplets physics variables
+  const dropEls = [
+    document.getElementById('droplet1'),
+    document.getElementById('droplet2'),
+    document.getElementById('droplet3')
+  ];
+  
+  const droplets = [
+    { el: dropEls[0], x: 140, y: 140, vx: 0, vy: 0 },
+    { el: dropEls[1], x: 140, y: 140, vx: 0, vy: 0 },
+    { el: dropEls[2], x: 140, y: 140, vx: 0, vy: 0 }
+  ];
+  
+  // Interaction variables
+  let mouseX = -9999;
+  let mouseY = -9999;
+  let targetMouseX = -9999;
+  let targetMouseY = -9999;
+  
+  // Globe rotation state
+  let rotX = 0;
+  let rotY = 0;
+  let velX = 0.002;
+  let velY = 0.0035;
+  const defaultVelX = 0.0015;
+  const defaultVelY = 0.003;
+  
+  let lastMouseX = null;
+  let lastMouseY = null;
+  
+  grid.addEventListener('mousemove', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    targetMouseX = e.clientX - rect.left;
+    targetMouseY = e.clientY - rect.top;
+    
+    if (lastMouseX !== null && lastMouseY !== null) {
+      // Add spin velocity based on mouse drag/movement speed
+      const diffX = e.clientX - lastMouseX;
+      const diffY = e.clientY - lastMouseY;
+      velY += diffX * 0.0003;
+      velX -= diffY * 0.0003;
+    }
+    lastMouseX = e.clientX;
+    lastMouseY = e.clientY;
+  });
+  
+  grid.addEventListener('mouseenter', () => {
+    grid.classList.add('is-hovered');
+    targetRadius = hoverRadius; // Scale up slowly on hover
+  });
+  
+  grid.addEventListener('mouseleave', () => {
+    targetMouseX = -9999;
+    targetMouseY = -9999;
+    lastMouseX = null;
+    lastMouseY = null;
+    grid.classList.remove('is-hovered');
+    grid.classList.remove('is-clicked');
+    targetRadius = normalRadius; // Scale down slowly to normal
+  });
+  
+  grid.addEventListener('mousedown', () => {
+    grid.classList.add('is-clicked');
+    // Rapid outward explosion bounce!
+    currentRadius = 185;
+    radiusVel = 18;
+    
+    // Liquid Droplets explode outward on click
+    droplets.forEach(d => {
+      d.vx = (Math.random() - 0.5) * 32;
+      d.vy = (Math.random() - 0.5) * 32;
+    });
+    
+    setTimeout(() => {
+      grid.classList.remove('is-clicked');
+    }, 1500);
+  });
+  
+  function updateAndRender() {
+    // Smoothen mouse tracking with LERP
+    if (targetMouseX === -9999) {
+      mouseX = -9999;
+      mouseY = -9999;
+    } else {
+      if (mouseX === -9999) {
+        mouseX = targetMouseX;
+        mouseY = targetMouseY;
+      } else {
+        mouseX += (targetMouseX - mouseX) * 0.12;
+        mouseY += (targetMouseY - mouseY) * 0.12;
+      }
+    }
+    
+    // Slow down spin velocity back to elegant defaults
+    velX += (defaultVelX - velX) * 0.04;
+    velY += (defaultVelY - velY) * 0.04;
+    
+    // Update rotation angles
+    rotX += velX;
+    rotY += velY;
+    
+    // Update spring physics for dynamic radius
+    const springK = 0.075;
+    const damping = 0.82;
+    const force = (targetRadius - currentRadius) * springK;
+    radiusVel += force;
+    radiusVel *= damping;
+    currentRadius += radiusVel;
+    
+    // Update Liquid Mercury Droplets physics
+    droplets.forEach((d, idx) => {
+      let targetX = 140;
+      let targetY = 140;
+      
+      if (mouseX !== -9999) {
+        // Hover State: Droplets follow cursor and revolve around it
+        const angleOffset = idx * (Math.PI * 2 / 3) + Date.now() * 0.0028;
+        targetX = (mouseX - 130) + Math.cos(angleOffset) * 24;
+        targetY = (mouseY - 130) + Math.sin(angleOffset) * 24;
+        
+        const ax = (targetX - d.x) * 0.045;
+        const ay = (targetY - d.y) * 0.045;
+        d.vx = (d.vx + ax) * 0.88;
+        d.vy = (d.vy + ay) * 0.88;
+      } else {
+        // Idle State: Droplets orbit center and fuse with main blob
+        const angle = Date.now() * 0.0014 + idx * (Math.PI * 2 / 3);
+        targetX = 140 + Math.cos(angle) * 38;
+        targetY = 140 + Math.sin(angle) * 38;
+        
+        const ax = (targetX - d.x) * 0.06;
+        const ay = (targetY - d.y) * 0.06;
+        d.vx = (d.vx + ax) * 0.86;
+        d.vy = (d.vy + ay) * 0.86;
+      }
+      
+      d.x += d.vx;
+      d.y += d.vy;
+      
+      if (d.el) {
+        d.el.style.transform = `translate(${d.x - 140}px, ${d.y - 140}px) translate(-50%, -50%)`;
+      }
+    });
+    
+    ctx.clearRect(0, 0, sizeCSS, sizeCSS);
+    
+    // 1. Render space-time fabric background grid lines
+    lines.forEach(line => {
+      line.points.forEach(pt => {
+        let targetX = pt.xBase;
+        let targetY = pt.yBase;
+        
+        if (mouseX !== -9999) {
+          const dx = mouseX - pt.xBase;
+          const dy = mouseY - pt.yBase;
+          const dist = Math.hypot(dx, dy);
+          
+          if (dist < 140) {
+            const influence = Math.pow(1 - dist / 140, 2);
+            targetX = pt.xBase + dx * 0.25 * influence;
+            targetY = pt.yBase + dy * 0.25 * influence;
+          }
+        }
+        
+        pt.x += (targetX - pt.x) * 0.15;
+        pt.y += (targetY - pt.y) * 0.15;
+      });
+      
+      ctx.beginPath();
+      ctx.moveTo(line.points[0].x, line.points[0].y);
+      for (let k = 1; k < line.points.length; k++) {
+        ctx.lineTo(line.points[k].x, line.points[k].y);
+      }
+      ctx.strokeStyle = 'rgba(223, 197, 159, 0.07)';
+      ctx.lineWidth = 0.85;
+      ctx.stroke();
+    });
+    
+    // 2. Rotate, project, and warp 3D Globe Points
+    const fov = 320;
+    const cosX = Math.cos(rotX);
+    const sinX = Math.sin(rotX);
+    const cosY = Math.cos(rotY);
+    const sinY = Math.sin(rotY);
+    
+    spherePoints.forEach(p => {
+      // Rotate unit vectors around Y axis
+      let x1 = p.xBase * cosY - p.zBase * sinY;
+      let z1 = p.xBase * sinY + p.zBase * cosY;
+      
+      // Rotate unit vectors around X axis
+      let y2 = p.yBase * cosX - z1 * sinX;
+      let z2 = p.yBase * sinX + z1 * cosX;
+      
+      // Scale by current dynamically animated radius
+      p.x = x1 * currentRadius;
+      p.y = y2 * currentRadius;
+      p.z = z2 * currentRadius;
+      
+      // Project to 2D screen coordinates
+      p.projScale = fov / (fov + p.z);
+      p.projX = centerX + p.x * p.projScale;
+      p.projY = centerY + p.y * p.projScale;
+      
+      // Dynamic Magnetic Distortion towards liquid droplets + mouse cursor dent
+      let targetDx = 0, targetDy = 0, targetDz = 0;
+      
+      // Magnetic pull outward towards liquid droplets
+      droplets.forEach(d => {
+        const dropCanvasX = d.x + 130;
+        const dropCanvasY = d.y + 130;
+        const dist2D = Math.hypot(p.projX - dropCanvasX, p.projY - dropCanvasY);
+        if (dist2D < 80) {
+          const pull = (1 - dist2D / 80) * 28; // Bulge outwards towards droplets
+          targetDx += p.xBase * pull;
+          targetDy += p.yBase * pull;
+          targetDz += p.zBase * pull;
+        }
+      });
+      
+      // Gentle compression directly under cursor
+      if (mouseX !== -9999) {
+        const dist2D = Math.hypot(p.projX - mouseX, p.projY - mouseY);
+        if (dist2D < 90) {
+          const force = (1 - dist2D / 90) * -34; // Dent inwards
+          targetDx += p.xBase * force;
+          targetDy += p.yBase * force;
+          targetDz += p.zBase * force;
+        }
+      }
+      
+      // LERP ripples
+      p.dx += (targetDx - p.dx) * 0.15;
+      p.dy += (targetDy - p.dy) * 0.15;
+      p.dz += (targetDz - p.dz) * 0.15;
+      
+      // Re-apply rotation to displacement offsets
+      const rDx = p.dx * cosY - p.dz * sinY;
+      const rDz1 = p.dx * sinY + p.dz * cosY;
+      const rDy = p.dy * cosX - rDz1 * sinX;
+      const rDz = p.dy * sinX + rDz1 * cosX;
+      
+      p.x += rDx;
+      p.y += rDy;
+      p.z += rDz;
+      
+      // Re-project with displaced coordinates
+      p.projScale = fov / (fov + p.z);
+      p.projX = centerX + p.x * p.projScale;
+      p.projY = centerY + p.y * p.projScale;
+    });
+    
+    // Sort points by depth (Z-buffer) for realistic translucent overlay drawing
+    const sortedPoints = [...spherePoints].sort((a, b) => b.z - a.z);
+    
+    // 3. Draw Holographic Mesh Connections
+    ctx.lineWidth = 0.55;
+    for (let i = 0; i < spherePoints.length; i++) {
+      const p1 = spherePoints[i];
+      // Limit connections to adjacent points to run smoothly at 60fps
+      const connectLimit = 8;
+      for (let j = 1; j <= connectLimit; j++) {
+        const p2 = spherePoints[(i + j) % spherePoints.length];
+        
+        // Calculate 3D distance between points
+        const dist3D = Math.hypot(p1.x - p2.x, p1.y - p2.y, p1.z - p2.z);
+        const maxDist = currentRadius * 0.74; // Scale connection thresholds dynamically
+        if (dist3D < maxDist) {
+          const avgZ = (p1.z + p2.z) / 2;
+          const zDepthFactor = (currentRadius - avgZ) / (currentRadius * 2);
+          if (zDepthFactor > 0.15) {
+            const alpha = zDepthFactor * (1 - dist3D / maxDist) * 0.22;
+            ctx.beginPath();
+            ctx.moveTo(p1.projX, p1.projY);
+            ctx.lineTo(p2.projX, p2.projY);
+            ctx.strokeStyle = `rgba(223, 197, 159, ${alpha})`;
+            ctx.stroke();
+          }
+        }
+      }
+    }
+    
+    // 4. Draw Projected 3D particles
+    sortedPoints.forEach(p => {
+      const zDepthFactor = (currentRadius - p.z) / (currentRadius * 2);
+      const opacity = 0.15 + zDepthFactor * 0.65;
+      const size = (1.5 + zDepthFactor * 4.0) * (p.projScale * 0.8);
+      
+      // Calculate cursor proximity for local glow highlight
+      let isHovered = false;
+      if (mouseX !== -9999) {
+        const dist2D = Math.hypot(p.projX - mouseX, p.projY - mouseY);
+        isHovered = (dist2D < 32);
+      }
+      
+      ctx.beginPath();
+      ctx.arc(p.projX, p.projY, size / 2, 0, Math.PI * 2);
+      ctx.fillStyle = isHovered 
+        ? `rgba(255, 255, 255, 1)` 
+        : `rgba(223, 197, 159, ${opacity})`;
+      ctx.fill();
+      
+      // Draw outer halo circle on active hover
+      if (isHovered) {
+        ctx.beginPath();
+        ctx.arc(p.projX, p.projY, size / 2 + 5.5, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(223, 197, 159, 0.45)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+    });
+    
+    requestAnimationFrame(updateAndRender);
+  }
+  
+  requestAnimationFrame(updateAndRender);
 })();
 
 /* ═══════════════ NAVBAR SCROLL & ACTIVE LINK UPDATES ═══════════════ */
@@ -521,11 +915,22 @@ const skillsData = {
     });
 
     if (targetCard) {
-      targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      targetCard.classList.add('project-highlight-pulse');
+      // UX Enhancement: If target card is hidden by filter, reset filters to "all"
+      if (targetCard.classList.contains('hide-filter') || targetCard.classList.contains('fade-out-filter')) {
+        const allBtn = document.querySelector('.project-filter-btn[data-filter="all"]');
+        if (allBtn) {
+          allBtn.click();
+        }
+      }
+
+      // Wait a moment for filter transition to start before scrolling and pulsing
       setTimeout(() => {
-        targetCard.classList.remove('project-highlight-pulse');
-      }, 2300);
+        targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        targetCard.classList.add('project-highlight-pulse');
+        setTimeout(() => {
+          targetCard.classList.remove('project-highlight-pulse');
+        }, 6000);
+      }, 150);
     } else {
       // Fallback: scroll to projects section
       const section = document.getElementById('projects');
@@ -719,8 +1124,8 @@ const skillsData = {
   function showCaseStudy(p) {
     document.getElementById('caseStudyTitle').textContent = p.title;
     document.getElementById('caseStudyMeta').innerHTML = `
-      <span><strong>Role:</strong> ${p.role}</span>
-      <span><strong>Timeline:</strong> ${p.timeline}</span>
+      <span><strong>Role</strong>${p.role}</span>
+      <span><strong>Timeline</strong>${p.timeline}</span>
     `;
     
     // Tech stack
@@ -854,6 +1259,16 @@ const DataStore = {
       read: false
     };
     DataStore.add(newSubmission);
+    
+    // Send confirmation auto-reply to the user if EmailJS is configured
+    if (typeof emailjs !== 'undefined' && CONFIG.EMAILJS_PUBLIC_KEY && CONFIG.EMAILJS_PUBLIC_KEY !== 'YOUR_EMAILJS_PUBLIC_KEY') {
+      emailjs.send(CONFIG.EMAILJS_SERVICE_ID, CONFIG.EMAILJS_TEMPLATE_ID, {
+        name: name,
+        email: email,
+        title: subject,
+        message: message
+      }).catch(err => console.error("EmailJS auto-reply error:", err));
+    }
     
     // Send email via Web3Forms API if key is present, fallback to mailto client
     if (CONFIG.WEB3FORMS_ACCESS_KEY && CONFIG.WEB3FORMS_ACCESS_KEY !== 'YOUR_ACCESS_KEY_HERE') {
@@ -1354,3 +1769,54 @@ document.addEventListener('DOMContentLoaded', () => {
     shine.style.setProperty('--mouse-y', '50%');
   });
 })();
+
+
+/* ═══════════════ PROJECT SHOWCASE: FILTERS & MOUSE GLOW ═══════════════ */
+document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.project-card');
+  
+  // 1. Mouse-glow effect coordinate updates
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mx', `${x}px`);
+      card.style.setProperty('--my', `${y}px`);
+    });
+  });
+
+  // 2. Category filtering logic
+  const filterBtns = document.querySelectorAll('.project-filter-btn');
+  
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Toggle active button class
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filterValue = btn.getAttribute('data-filter');
+
+      cards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        const matches = (filterValue === 'all' || category === filterValue);
+
+        if (matches) {
+          card.classList.remove('hide-filter');
+          // Trigger reflow to make sure display:flex is applied before removing fade-out-filter
+          void card.offsetWidth;
+          card.classList.remove('fade-out-filter');
+        } else {
+          if (card.classList.contains('hide-filter')) return;
+          card.classList.add('fade-out-filter');
+          
+          setTimeout(() => {
+            if (card.classList.contains('fade-out-filter')) {
+              card.classList.add('hide-filter');
+            }
+          }, 400); // 0.4s matching CSS transition duration
+        }
+      });
+    });
+  });
+});
