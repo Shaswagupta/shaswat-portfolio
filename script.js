@@ -603,7 +603,9 @@ const caseStudies = {
   const sections=document.querySelectorAll('.section');
   if(!nav) return;
   let lastScrollY = window.scrollY;
-  window.addEventListener('scroll', function() {
+  let ticking = false;
+
+  function updateNavbar() {
     const currentScrollY = window.scrollY;
     
     // Toggle background scrolled styling
@@ -628,7 +630,17 @@ const caseStudies = {
     links.forEach(l => {
       l.classList.toggle('active', l.getAttribute('href') === '#' + current);
     });
-  });
+  }
+
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        updateNavbar();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
 })();
 
 /* ═══════════════ HAMBURGER MENU ═══════════════ */
