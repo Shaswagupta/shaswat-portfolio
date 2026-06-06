@@ -2567,6 +2567,12 @@ body {
 }
 
 @media (max-width: 768px) {
+  .nav-container {
+    padding: 0 16px;
+  }
+  .section-container {
+    padding: 0 16px;
+  }
   .section-title {
     font-size: 2.8rem;
   }
@@ -2660,6 +2666,118 @@ body {
   .admin-table th:nth-child(4), .admin-table td:nth-child(4),
   .admin-table th:nth-child(5), .admin-table td:nth-child(5) {
     display: none; /* Hide non-critical columns on mobile */
+  }
+}
+
+@media (max-width: 600px) {
+  .case-study-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    position: relative;
+    top: 0;
+    margin-bottom: 30px;
+    padding: 0 0 16px 0;
+  }
+  .case-study-header-links {
+    justify-content: space-between;
+  }
+  .case-study-header-links .btn {
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+  .close-case-study-btn {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.2rem;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+  .hero-subtitle {
+    font-size: 1.1rem;
+    min-height: 28px;
+  }
+  .hero-desc {
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+  }
+  .hero-ctas {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .hero-ctas .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .section-title {
+    font-size: 2.2rem;
+  }
+  .section-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 40px;
+  }
+  .interactive-glow-grid {
+    width: 290px;
+    height: 290px;
+  }
+  .hero-grid-canvas {
+    width: 410px;
+    height: 410px;
+  }
+  .fluid-blob-container {
+    width: 200px;
+    height: 200px;
+  }
+  .fluid-main-blob {
+    width: 70px;
+    height: 70px;
+  }
+  .fluid-droplet {
+    width: 22px;
+    height: 22px;
+  }
+  .project-body {
+    padding: 20px;
+  }
+  .project-specs-grid {
+    padding: 8px;
+    gap: 6px;
+  }
+  .spec-label {
+    font-size: 0.6rem;
+  }
+  .spec-value {
+    font-size: 0.65rem;
+  }
+  .contact-action-card {
+    padding: 16px;
+  }
+  .action-card-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 12px;
+  }
+  .action-card-info h4 {
+    font-size: 0.95rem;
+  }
+  .action-card-info p {
+    font-size: 0.78rem;
+  }
+  .case-study-meta {
+    flex-direction: column;
+    gap: 16px;
+    padding: 12px 0;
+  }
+  .admin-passcode-container {
+    padding: 24px 16px;
   }
 }
 

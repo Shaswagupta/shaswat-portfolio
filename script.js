@@ -309,8 +309,9 @@ const caseStudies = {
   
   grid.addEventListener('mousemove', (e) => {
     const rect = canvas.getBoundingClientRect();
-    targetMouseX = e.clientX - rect.left;
-    targetMouseY = e.clientY - rect.top;
+    // Map mouse coordinates correctly based on design resolution sizeCSS (540) vs visual CSS client size
+    targetMouseX = (e.clientX - rect.left) * (sizeCSS / rect.width);
+    targetMouseY = (e.clientY - rect.top) * (sizeCSS / rect.height);
     
     if (lastMouseX !== null && lastMouseY !== null) {
       // Add spin velocity based on mouse drag/movement speed
@@ -1010,6 +1011,16 @@ const skillsData = {
     });
 
     updateSkillDetail();
+    
+    // Auto-scroll to detail panel on mobile screens
+    if (window.innerWidth <= 900) {
+      setTimeout(() => {
+        const detailPane = document.getElementById('skillDetailPane');
+        if (detailPane) {
+          detailPane.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }, 200);
+    }
   }
 
   // Update Detail Panel on Right
@@ -1647,6 +1658,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const cursorOutline = document.querySelector('.custom-cursor-outline');
   
   if (cursorDot && cursorOutline) {
+    // Only initialize custom cursor on devices that support hover (non-touch)
+    if (!window.matchMedia('(pointer: fine)').matches) {
+      cursorDot.style.display = 'none';
+      cursorOutline.style.display = 'none';
+      return;
+    }
+    
     let targetX = 0, targetY = 0;
     let dotX = 0, dotY = 0;
     let outlineX = 0, outlineY = 0;
