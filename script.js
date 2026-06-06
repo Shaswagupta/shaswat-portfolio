@@ -602,16 +602,31 @@ const caseStudies = {
   const links=document.querySelectorAll('.nav-link');
   const sections=document.querySelectorAll('.section');
   if(!nav) return;
-  window.addEventListener('scroll',function(){
-    nav.classList.toggle('scrolled',window.scrollY>50);
-    let current='';
-    sections.forEach(s=>{
-      if(window.scrollY>=s.offsetTop-220) {
-        current=s.getAttribute('id');
+  let lastScrollY = window.scrollY;
+  window.addEventListener('scroll', function() {
+    const currentScrollY = window.scrollY;
+    
+    // Toggle background scrolled styling
+    nav.classList.toggle('scrolled', currentScrollY > 50);
+    
+    // Hide/show navbar depending on scroll direction
+    const navLinks = document.getElementById('navLinks');
+    const isMenuOpen = navLinks && navLinks.classList.contains('open');
+    if (currentScrollY > 150 && currentScrollY > lastScrollY && !isMenuOpen) {
+      nav.classList.add('nav-hidden');
+    } else {
+      nav.classList.remove('nav-hidden');
+    }
+    lastScrollY = currentScrollY;
+    
+    let current = '';
+    sections.forEach(s => {
+      if (currentScrollY >= s.offsetTop - 220) {
+        current = s.getAttribute('id');
       }
     });
-    links.forEach(l=>{
-      l.classList.toggle('active', l.getAttribute('href')==='#'+current);
+    links.forEach(l => {
+      l.classList.toggle('active', l.getAttribute('href') === '#' + current);
     });
   });
 })();
