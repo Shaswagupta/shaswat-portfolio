@@ -601,6 +601,9 @@ const caseStudies = {
   const nav=document.getElementById('navbar');
   const links=document.querySelectorAll('.nav-link');
   const sections=document.querySelectorAll('.section');
+  const timelineContainer = document.querySelector('.timeline-container');
+  const progressThread = document.querySelector('.timeline-progress-thread');
+  const timelineItems = document.querySelectorAll('.timeline-item');
   if(!nav) return;
   let lastScrollY = window.scrollY;
   let ticking = false;
@@ -630,6 +633,30 @@ const caseStudies = {
     links.forEach(l => {
       l.classList.toggle('active', l.getAttribute('href') === '#' + current);
     });
+
+    // Update Timeline Progress Thread & Active markers
+    if (timelineContainer && progressThread) {
+      const rect = timelineContainer.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      
+      // Calculate scroll progress percentage through the timeline container
+      const startPoint = viewportHeight * 0.85; // Start drawing line when top of container is 85% down viewport
+      const entryY = startPoint - rect.top;
+      
+      let percent = (entryY / rect.height) * 100;
+      percent = Math.max(0, Math.min(100, percent));
+      progressThread.style.height = `${percent}%`;
+      
+      // Activate milestones as they enter scroll threshold (e.g. above 70% of viewport height)
+      timelineItems.forEach(item => {
+        const itemRect = item.getBoundingClientRect();
+        if (itemRect.top < viewportHeight * 0.7) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+    }
   }
 
   window.addEventListener('scroll', function() {

@@ -1515,6 +1515,27 @@ body {
   width: 1px;
   background: linear-gradient(to bottom, transparent, rgba(var(--primary-rgb), 0.2) 15%, rgba(var(--primary-rgb), 0.2) 85%, transparent);
   transform: translateX(-50%);
+  overflow: hidden;
+}
+.timeline-progress-thread {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(to bottom, var(--primary), #e0a96d);
+  box-shadow: 0 0 10px rgba(223, 197, 159, 0.4);
+  transition: height 0.05s ease-out;
+}
+.timeline-item.active .timeline-marker {
+  background: var(--primary);
+  box-shadow: var(--glow-gold);
+  border-color: #fff;
+  transform: scale(1.2);
+}
+.timeline-item.active .timeline-content {
+  border-color: rgba(223, 197, 159, 0.25);
+  box-shadow: 0 10px 30px rgba(11, 13, 16, 0.2);
 }
 .timeline-item {
   display: flex;
