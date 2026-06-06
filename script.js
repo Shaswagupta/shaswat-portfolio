@@ -612,7 +612,7 @@ const caseStudies = {
     // Hide/show navbar depending on scroll direction
     const navLinks = document.getElementById('navLinks');
     const isMenuOpen = navLinks && navLinks.classList.contains('open');
-    if (currentScrollY > 150 && currentScrollY > lastScrollY && !isMenuOpen) {
+    if (currentScrollY > 20 && currentScrollY > lastScrollY && !isMenuOpen) {
       nav.classList.add('nav-hidden');
     } else {
       nav.classList.remove('nav-hidden');
