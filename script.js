@@ -36,7 +36,8 @@ const caseStudies = {
     challenges: 'Handling simultaneous file reads and writes safely. C++ file pointers can easily get corrupted if data offsets are miscalculated. Resolved by enforcing fixed-length records and implementing file lock validation rules.',
     learnings: 'Mastered file stream manipulation, pointer arithmetic, memory layout of C++ classes, and the importance of structured error handling in system programs.',
     achievement: 'Implemented O(1) constant-time direct record lookup using block serialization math.',
-    image: 'img_bank.png'
+    image: 'img_bank.png',
+    images: ['img_bank.png']
   },
   'crop-disease': {
     title: 'Crop Disease Detector',
@@ -57,7 +58,8 @@ const caseStudies = {
     challenges: 'Preventing model overfitting while training on visual datasets with variable lighting conditions. Addressed by applying extensive data augmentation techniques (rotation, zoom, horizontal flips) and adding dropout regularization layers.',
     learnings: 'Acquired deep understanding of CNN feature extraction, model inference optimization, learning rate schedulers, and Streamlit dashboard design.',
     achievement: 'Achieved 95.8% validation accuracy while maintaining sub-100ms inference time on standard CPUs.',
-    image: 'img_crop.png'
+    image: 'img_crop.png',
+    images: ['img_crop.png']
   },
   'ecommerce': {
     title: 'E-Commerce Platform',
@@ -78,7 +80,8 @@ const caseStudies = {
     challenges: 'Preventing duplicate orders during concurrent API calls during high-traffic intervals. Solved by implementing optimistic locking on inventory counts in MongoDB and checking transaction status before executing credit charges.',
     learnings: 'Gained proficiency in secure cookie session handling, webhooks integration, database modeling with Mongoose, and CSS-based responsive layout optimization.',
     achievement: 'Designed a secure checkout pipeline with Stripe webhooks protecting orders from frontend manipulation.',
-    image: 'img_ecommerce.png'
+    image: 'img_ecommerce.png',
+    images: ['img_ecommerce.png']
   },
   'movie-booking': {
     title: 'Movie Ticket Booking',
@@ -99,7 +102,8 @@ const caseStudies = {
     challenges: 'Preventing memory leaks while handling large collections of showtime nodes dynamically. Addressed by utilizing C++ smart pointers (std::unique_ptr and std::shared_ptr) to ensure robust RAII memory management.',
     learnings: 'Solidified knowledge of algorithmic time complexity, bit-level manipulations, memory optimization, and custom container designs in C++.',
     achievement: 'Achieved O(1) seat validation lookup using bitmask arrays.',
-    image: 'img_movie.png'
+    image: 'img_movie.png',
+    images: ['img_movie.png']
   },
   'plant-disease': {
     title: 'Plant Disease Classification',
@@ -120,7 +124,8 @@ const caseStudies = {
     challenges: 'Fine-tuning deeper layers without destroying general features already learned by ResNet50. Solved by implementing a custom training scheduler that progressively unfroze layers as validation loss converged.',
     learnings: 'Acquired hands-on experience in transfer learning strategies, custom layer design in Keras, activation visualization, and hyperparameter tuning.',
     achievement: 'Tuned ResNet50 to achieve 96.5% categorization accuracy in under 15 epochs.',
-    image: 'img_plant.png'
+    image: 'img_plant.png',
+    images: ['img_plant.png']
   },
   'data-visualization': {
     title: 'Data Visualization Dashboard',
@@ -141,7 +146,30 @@ const caseStudies = {
     challenges: 'Recalculating chart bounds on dynamic window resizing without causing rendering delays. Solved by implementing debounce logic and utilizing CSS viewBox viewport configuration.',
     learnings: 'Mastered data binding concepts in D3, coordinate math, vector scaling, SVG paths, and JavaScript performance profiling tools.',
     achievement: 'Rendered over 5,000 active data points smoothly at 60 FPS using D3 dynamic updates.',
-    image: 'img_dashboard.png'
+    image: 'img_dashboard.png',
+    images: ['img_dashboard.png']
+  },
+  'skillsurfer': {
+    title: 'SkillSurfer Platform',
+    role: 'Full-Stack Developer & Lead Architect',
+    timeline: '8 Weeks',
+    github: 'https://github.com/Shaswagupta/frontend-dti',
+    demo: 'https://unrivaled-paletas-195d67.netlify.app/',
+    techStack: ['React', 'TypeScript', 'Supabase', 'Tailwind CSS', 'Node.js', 'PostgreSQL'],
+    overview: 'A unified digital platform for discovering, organizing, and tracking extracurricular activities, tournaments, and gaming events. Connects participants, organizers, and institutions into a structured, real-time digital ecosystem.',
+    problem: 'Extracurricular events are highly fragmented—promoted through WhatsApp or Instagram and managed via volatile Google Sheets. This causes scheduling conflicts, low coordination efficiency, and isolates student achievements inside single institutions.',
+    solution: 'Engineered a multi-role web platform utilizing React and Supabase. Implemented real-time scheduler synchronization, PostgreSQL Row-Level Security, a live interactive tournament bracket manager, and detailed analytics tracking student performance stats.',
+    features: [
+      'Dual-path dashboard interface supporting separate Student profile and Organizer administration portals.',
+      'Live leaderboards and interactive point progression chart panels tracking individual and squad stats.',
+      'Dynamic search engine with category-based filtering and instant registration workflows.',
+      'Trophy case system showcasing earned digital credentials and user game libraries.'
+    ],
+    challenges: 'Handling concurrent state syncing and security validations for different user roles. Resolved by leveraging Supabase real-time subscriptions, secure auth flows, and designing robust context managers in React.',
+    learnings: 'Mastered relational database normalization, custom charting with canvas elements, real-time communication protocols, and complex mobile-first UX layout strategies.',
+    achievement: 'Designed a fully integrated SaaS platform that automates event scheduling verification and scales talent discovery across communities.',
+    image: 'img_skillsurfer.png',
+    images: ['img_skillsurfer.png', 'img_skillsurfer_analytics.png', 'img_skillsurfer_event.png', 'img_skillsurfer_login.png']
   }
 };
 
@@ -755,7 +783,7 @@ const skillsData = {
         achievement: "Engineered single-page application router and custom trailing cursor renderer.",
         desc: "Engine for interactive frontends and scalable backend servers. Experienced with ES6+, asynchronous programming, closures, and Event Loop internals.",
         topics: ["ES6+", "Asynchronous JS (Promises, Async/Await)", "DOM Manipulation", "Event Loop", "V8 Engine Internals"],
-        projects: ["E-Commerce Platform", "Data Visualization Dashboard"]
+        projects: ["E-Commerce Platform", "Data Visualization Dashboard", "SkillSurfer Platform"]
       },
       {
         name: "Python",
@@ -796,13 +824,13 @@ const skillsData = {
       },
       {
         name: "React.js",
-        level: 82,
+        level: 85,
         mastery: "Advanced",
         usage: 5,
-        achievement: "Built stateful shopping carts and dynamically rendered product catalogs.",
+        achievement: "Built stateful shopping carts and real-time dashboard analytics panels.",
         desc: "Component-driven frontend library. Proficient in functional components, hooks, custom state management (Context, Redux), and virtual DOM rendering optimization.",
         topics: ["React Hooks", "Context API & State Management", "Virtual DOM", "Component Lifecycle", "Performance Optimization (useMemo, useCallback)"],
-        projects: ["E-Commerce Platform"]
+        projects: ["E-Commerce Platform", "SkillSurfer Platform"]
       },
       {
         name: "Node.js",
@@ -843,13 +871,13 @@ const skillsData = {
       },
       {
         name: "PostgreSQL",
-        level: 70,
-        mastery: "Proficient",
-        usage: 3,
-        achievement: "Designed normalized schemas and constraints ensuring data integrity.",
+        level: 78,
+        mastery: "Advanced",
+        usage: 4,
+        achievement: "Designed normalized tournament schemas and robust database constraints.",
         desc: "Advanced relational database system. Skilled in structural design, indexing, foreign keys, transaction handling, and SQL queries.",
         topics: ["Relational Schemas", "Foreign Key Constraints", "JSONB Support", "Views & Triggers", "Complex Queries"],
-        projects: ["E-Commerce Platform"]
+        projects: ["E-Commerce Platform", "SkillSurfer Platform"]
       },
       {
         name: "MySQL",
@@ -910,13 +938,13 @@ const skillsData = {
       },
       {
         name: "Figma / UI Design",
-        level: 75,
+        level: 80,
         mastery: "Advanced",
         usage: 4,
-        achievement: "Modeled portfolio layouts, grids, color tokens, and responsive mockups.",
+        achievement: "Modeled game libraries, tournament brackets, and responsive dashboards.",
         desc: "Collaborative interface design tool. Skilled in wireframing, layout systems, component variants, auto-layout, prototyping, and establishing design tokens.",
         topics: ["Auto-Layout", "Component Library Systems", "Interactive Prototyping", "Design System Tokens", "Vector Layouts"],
-        projects: ["Portfolio Website"]
+        projects: ["Portfolio Website", "SkillSurfer Platform"]
       }
     ]
   },
@@ -1242,10 +1270,55 @@ const skillsData = {
     document.getElementById('caseStudyGithub').href = p.github;
     document.getElementById('caseStudyDemo').href = p.demo;
     
-    // Image
+    // Image Gallery
     const imgEl = document.getElementById('caseStudyImage');
+    const thumbsContainer = document.getElementById('caseStudyGalleryThumbs');
+    
+    // Reset image classes
+    imgEl.classList.remove('changing');
+    
+    // Set initial image
     imgEl.src = p.image;
     imgEl.alt = p.title;
+    
+    // Determine the array of images
+    const imagesList = p.images || [p.image];
+    
+    if (imagesList.length > 1) {
+      thumbsContainer.style.display = 'grid';
+      thumbsContainer.innerHTML = imagesList.map((imgSrc, idx) => `
+        <div class="case-study-thumb ${imgSrc === p.image ? 'active' : ''}" data-idx="${idx}">
+          <img src="${imgSrc}" alt="${p.title} Visual ${idx + 1}" loading="lazy">
+        </div>
+      `).join('');
+      
+      // Add click listeners to thumbnails
+      thumbsContainer.querySelectorAll('.case-study-thumb').forEach(thumb => {
+        thumb.addEventListener('click', () => {
+          const idx = parseInt(thumb.getAttribute('data-idx'));
+          const targetSrc = imagesList[idx];
+          
+          if (imgEl.src.endsWith(targetSrc)) return; // Already active
+          
+          // Smooth fade transition
+          imgEl.classList.add('changing');
+          
+          // Toggle active class on thumbnails
+          thumbsContainer.querySelectorAll('.case-study-thumb').forEach(t => t.classList.remove('active'));
+          thumb.classList.add('active');
+          
+          setTimeout(() => {
+            imgEl.src = targetSrc;
+            imgEl.onload = () => {
+              imgEl.classList.remove('changing');
+            };
+          }, 250);
+        });
+      });
+    } else {
+      thumbsContainer.style.display = 'none';
+      thumbsContainer.innerHTML = '';
+    }
     
     // Features list
     const featuresList = document.getElementById('caseStudyFeatures');
