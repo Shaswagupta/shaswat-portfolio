@@ -1949,19 +1949,4 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Also update filter logic for .project-row instead of .project-card
-  document.querySelectorAll('.project-filter-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-      document.querySelectorAll('.project-filter-btn').forEach(b => b.classList.remove('active'));
-      this.classList.add('active');
-      const filter = this.dataset.filter;
-      document.querySelectorAll('.project-row').forEach(row => {
-        const match = filter === 'all' || row.dataset.category === filter;
-        row.classList.remove('hide-filter', 'fade-out-filter');
-        if (!match) {
-          row.classList.add('fade-out-filter');
-          setTimeout(() => row.classList.add('hide-filter'), 400);
-        }
-      });
-    });
-  });
-})();
+  
