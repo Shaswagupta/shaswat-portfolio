@@ -1948,5 +1948,4 @@ document.addEventListener('DOMContentLoaded', () => {
     row.addEventListener('mouseleave', () => pill.classList.remove('visible'));
   });
 
-  // Also update filter logic for .project-row instead of .project-card
-  
+})();
