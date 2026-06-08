@@ -1927,3 +1927,41 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+
+// ── Project Cursor Pill ──────────────────────────────────────────────────────
+(function() {
+  const pill = document.getElementById('projectCursorPill');
+  if (!pill) return;
+  let pillX = 0, pillY = 0, curX = 0, curY = 0;
+  document.addEventListener('mousemove', e => { curX = e.clientX; curY = e.clientY; });
+  function animatePill() {
+    pillX += (curX - pillX) * 0.12;
+    pillY += (curY - pillY) * 0.12;
+    pill.style.left = pillX + 'px';
+    pill.style.top = pillY + 'px';
+    requestAnimationFrame(animatePill);
+  }
+  animatePill();
+  document.querySelectorAll('.project-row').forEach(row => {
+    row.addEventListener('mouseenter', () => pill.classList.add('visible'));
+    row.addEventListener('mouseleave', () => pill.classList.remove('visible'));
+  });
+
+  // Also update filter logic for .project-row instead of .project-card
+  document.querySelectorAll('.project-filter-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.project-filter-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      const filter = this.dataset.filter;
+      document.querySelectorAll('.project-row').forEach(row => {
+        const match = filter === 'all' || row.dataset.category === filter;
+        row.classList.remove('hide-filter', 'fade-out-filter');
+        if (!match) {
+          row.classList.add('fade-out-filter');
+          setTimeout(() => row.classList.add('hide-filter'), 400);
+        }
+      });
+    });
+  });
+})();
