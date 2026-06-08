@@ -1285,8 +1285,10 @@ const skillsData = {
 
   // Close handlers
   if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
-      window.location.hash = '';
+    closeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      history.replaceState(null, null, ' ');
+      hideCaseStudy();
     });
   }
   
