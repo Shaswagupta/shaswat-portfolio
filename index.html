@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Shaswat Gupta - CS Engineer, Full-Stack Developer and AI Specialist. Redesigned Premium Portfolio.">
   <title>Shaswat Gupta | Premium Portfolio</title>
-  <link rel="stylesheet" href="style.css?v=14">
+  <link rel="stylesheet" href="style.css?v=15">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
   <!-- Umami Analytics -->
   <script defer src="https://cloud.umami.is/script.js" data-website-id="5138d205-d57d-4ad5-85ea-fde0706a857b"></script>
@@ -497,41 +497,55 @@
   <!-- Footer -->
   <footer id="footer">
     <div class="footer-container">
-      <!-- Centered Logo Monogram -->
-      <div class="footer-logo-wrapper">
-        <svg class="footer-logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="footerGold" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#DFC59F" />
-              <stop offset="50%" stop-color="#F2DFB8" />
-              <stop offset="100%" stop-color="#B3936A" />
-            </linearGradient>
-          </defs>
-          <circle cx="50" cy="50" r="44" stroke="url(#footerGold)" stroke-width="1.5" fill="none" />
-          <circle cx="50" cy="50" r="40" stroke="rgba(223, 197, 159, 0.1)" stroke-dasharray="2 2" fill="none" />
-          <text x="50" y="61" font-family="'Cormorant Garamond', 'Playfair Display', serif" font-size="34" font-weight="500" fill="url(#footerGold)" text-anchor="middle" letter-spacing="-1">SG</text>
-        </svg>
+      <div class="footer-grid">
+        <!-- Column 1: Brand Info -->
+        <div class="footer-brand-col">
+          <div class="footer-logo-wrapper">
+            <svg class="footer-logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="footerGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#DFC59F" />
+                  <stop offset="50%" stop-color="#F2DFB8" />
+                  <stop offset="100%" stop-color="#B3936A" />
+                </linearGradient>
+              </defs>
+              <circle cx="50" cy="50" r="44" stroke="url(#footerGold)" stroke-width="1.5" fill="none" />
+              <circle cx="50" cy="50" r="40" stroke="rgba(223, 197, 159, 0.1)" stroke-dasharray="2 2" fill="none" />
+              <text x="50" y="61" font-family="'Cormorant Garamond', 'Playfair Display', serif" font-size="34" font-weight="500" fill="url(#footerGold)" text-anchor="middle" letter-spacing="-1">SG</text>
+            </svg>
+          </div>
+          <h3 class="footer-brand-title font-serif">Shaswat Gupta</h3>
+          <p class="footer-brand-desc">Architecting premium, high-performance systems and bespoke web experiences at the intersection of rigorous logic and design aesthetics.</p>
+        </div>
+
+        <!-- Column 2: Navigation Directory -->
+        <div class="footer-nav-col">
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-nav-list">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#journey">Journey</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Social & Action -->
+        <div class="footer-connect-col">
+          <h4 class="footer-col-title">Connect</h4>
+          <div class="footer-social-links">
+            <a href="https://linkedin.com/in/shaswat-gupta" target="_blank" rel="noopener">LinkedIn &rarr;</a>
+            <a href="https://github.com/Shaswagupta" target="_blank" rel="noopener">GitHub &rarr;</a>
+            <a href="mailto:shaswatgupta2004@gmail.com">Email &rarr;</a>
+          </div>
+          <p class="footer-availability"><span class="availability-indicator"></span> Available for selective contracts</p>
+        </div>
       </div>
 
-      <!-- Quick Nav Links -->
-      <ul class="footer-links">
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#journey">Journey</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-
-      <!-- Tagline -->
-      <p class="footer-tagline">“Building high-performance software and elegant digital systems with precision and purpose.”</p>
-
-      <!-- Divider line -->
-      <div class="footer-divider"></div>
-
-      <!-- Copyright and bottom metadata -->
+      <!-- Footer Bottom -->
       <div class="footer-bottom">
-        <p class="footer-copyright">&copy; 2026 Shaswat Gupta. All rights reserved. <span id="adminTrigger" style="cursor:pointer;opacity:0.2;" title="Admin Access">&bull;</span></p>
+        <p class="footer-copyright">&copy; 2026 Shaswat Gupta. All rights reserved. <span id="adminTrigger" style="cursor:pointer;" title="Admin Access">&bull;</span></p>
         <p class="footer-credit">Where Logic Meets Aesthetic Precision</p>
       </div>
     </div>
