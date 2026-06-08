@@ -1615,14 +1615,7 @@ body {
 }
 
 /* Filtering Transitions */
-.project-card.fade-out-filter {
-  opacity: 0 !important;
-  transform: scale(0.9) translateY(10px) !important;
-}
 
-.project-card.hide-filter {
-  display: none !important;
-}
 
 /* Highlight Pulse Modification */
 .project-card.project-highlight-pulse {
@@ -2971,10 +2964,7 @@ body {
   .skills-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .projects-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .about-grid {
+    .about-grid {
     grid-template-columns: 1fr;
     gap: 48px;
     text-align: center;
@@ -3065,10 +3055,7 @@ body {
   .skills-grid {
     grid-template-columns: 1fr;
   }
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-  
+    
   /* Case Study Mobile */
   .case-study-container {
     padding: 24px;
