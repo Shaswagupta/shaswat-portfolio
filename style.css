@@ -1169,6 +1169,49 @@ body {
   transform: translate(-50%, -50%) scale(1);
 }
 
+/* ═══════════════ PROJECT FILTER BUTTONS ═══════════════ */
+.projects-filter-wrapper {
+  margin-bottom: 40px;
+}
+
+.projects-filters {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.project-filter-btn {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 10px 22px;
+  border-radius: 50px;
+  color: var(--text-dim);
+  font-family: var(--font);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.project-filter-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(var(--primary-rgb), 0.2);
+  color: var(--text);
+  transform: translateY(-2px);
+}
+
+.project-filter-btn.active {
+  background: rgba(var(--primary-rgb), 0.08);
+  border-color: var(--primary);
+  color: var(--primary);
+  box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.12);
+}
+
 /* Project List */
 .projects-list {
   display: flex;
@@ -1295,6 +1338,7 @@ body {
   opacity: 0 !important;
   transform: scale(0.97) !important;
   pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 .project-row.hide-filter { display: none !important; }
 
@@ -1305,10 +1349,75 @@ body {
     gap: 24px;
     padding: 36px 0;
   }
-  .project-row-img { height: 220px; margin: 0; }
+  .project-row:nth-child(even) > * {
+    direction: ltr;
+  }
+  .project-row-img { height: 220px; margin: 0; border-radius: 12px; }
+  .project-row-img-inner { border-radius: 12px; }
   .project-row-body { padding: 0 8px; }
-  .project-row-number { font-size: 3.5rem; }
+  .project-row-number { font-size: 3.5rem; top: -5px; right: 8px; }
   .project-row-title { font-size: 1.5rem; }
+  .project-row-desc { font-size: 0.88rem; }
+  .projects-filters {
+    gap: 8px;
+  }
+  .project-filter-btn {
+    padding: 8px 16px;
+    font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-row, .project-row:nth-child(even) {
+    padding: 28px 0;
+    gap: 18px;
+  }
+  .project-row-img { height: 180px; }
+  .project-row-body { padding: 0 4px; }
+  .project-row-number { font-size: 2.8rem; top: 0; right: 4px; }
+  .project-row-title { font-size: 1.3rem; margin-bottom: 10px; }
+  .project-row-desc { font-size: 0.85rem; line-height: 1.55; margin-bottom: 14px; }
+  .project-row-badge { font-size: 0.65rem; margin-bottom: 8px; }
+  .project-row .project-specs-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 10px;
+  }
+  .project-row .spec-item:not(:last-child) {
+    border-right: none;
+    border-bottom: 1px solid rgba(223, 197, 159, 0.1);
+    padding-right: 0;
+    padding-bottom: 6px;
+  }
+  .project-row .spec-item {
+    text-align: center;
+  }
+  .project-row .project-tags {
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+  .project-row .project-tags span {
+    font-size: 0.68rem;
+    padding: 3px 10px;
+  }
+  .project-row .project-actions {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .project-row .project-actions .case-study-btn {
+    padding: 8px 16px;
+    font-size: 0.78rem;
+  }
+  .projects-filters {
+    gap: 6px;
+  }
+  .project-filter-btn {
+    padding: 7px 14px;
+    font-size: 0.73rem;
+  }
+  #projectCursorPill {
+    display: none;
+  }
 }
 
 /* Enhanced Project Card & Mouseglow */
@@ -1618,8 +1727,15 @@ body {
 
 
 /* Highlight Pulse Modification */
-.project-card.project-highlight-pulse {
+.project-card.project-highlight-pulse,
+.project-row.project-highlight-pulse {
   animation: projectHighlightPulseAnim 2s cubic-bezier(0.16, 1, 0.3, 1) 3;
+}
+
+.project-row.project-highlight-pulse {
+  background: rgba(223, 197, 159, 0.02);
+  position: relative;
+  z-index: 10;
 }
 
 @keyframes projectHighlightPulseAnim {
@@ -3035,9 +3151,16 @@ body {
     padding-left: 55px;
     padding-bottom: 40px;
   }
+  .timeline-item:nth-child(odd) {
+    transform: none;
+  }
   .timeline-item:nth-child(even) {
     margin-left: 0;
     justify-content: flex-start;
+    transform: none;
+  }
+  .timeline-item.active {
+    transform: none;
   }
   .timeline-marker {
     left: 22px;
@@ -3047,9 +3170,20 @@ body {
   .timeline-item:nth-child(even) .timeline-marker {
     left: 22px;
   }
+  /* Hide laser connector lines on mobile */
+  .timeline-item::after {
+    display: none;
+  }
   .timeline-content {
     width: 100%;
     padding: 24px;
+  }
+  .timeline-content > * {
+    transform: none;
+  }
+  .timeline-item:nth-child(odd):hover .timeline-content,
+  .timeline-item:nth-child(even):hover .timeline-content {
+    transform: translateY(-3px);
   }
   
   .skills-grid {

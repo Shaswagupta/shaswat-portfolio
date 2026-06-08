@@ -992,19 +992,19 @@ const skillsData = {
       return;
     }
 
-    const cards = document.querySelectorAll('.project-card');
-    let targetCard = null;
+    const rows = document.querySelectorAll('.project-row');
+    let targetRow = null;
 
-    cards.forEach(card => {
-      const titleEl = card.querySelector('h3');
+    rows.forEach(row => {
+      const titleEl = row.querySelector('.project-row-title');
       if (titleEl && titleEl.textContent.trim().toLowerCase() === projectName.trim().toLowerCase()) {
-        targetCard = card;
+        targetRow = row;
       }
     });
 
-    if (targetCard) {
-      // UX Enhancement: If target card is hidden by filter, reset filters to "all"
-      if (targetCard.classList.contains('hide-filter') || targetCard.classList.contains('fade-out-filter')) {
+    if (targetRow) {
+      // UX Enhancement: If target row is hidden by filter, reset filters to "all"
+      if (targetRow.classList.contains('hide-filter') || targetRow.classList.contains('fade-out-filter')) {
         const allBtn = document.querySelector('.project-filter-btn[data-filter="all"]');
         if (allBtn) {
           allBtn.click();
@@ -1013,10 +1013,10 @@ const skillsData = {
 
       // Wait a moment for filter transition to start before scrolling and pulsing
       setTimeout(() => {
-        targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        targetCard.classList.add('project-highlight-pulse');
+        targetRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        targetRow.classList.add('project-highlight-pulse');
         setTimeout(() => {
-          targetCard.classList.remove('project-highlight-pulse');
+          targetRow.classList.remove('project-highlight-pulse');
         }, 6000);
       }, 150);
     } else {
@@ -1880,9 +1880,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ═══════════════ PROJECT SHOWCASE: FILTERS & MOUSE GLOW ═══════════════ */
 document.addEventListener('DOMContentLoaded', () => {
+  // 1. Mouse-glow effect for old-style project cards (if any remain)
   const cards = document.querySelectorAll('.project-card');
-  
-  // 1. Mouse-glow effect coordinate updates
   cards.forEach(card => {
     card.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
@@ -1893,8 +1892,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 2. Category filtering logic
+  // 2. Category filtering logic — targets .project-row (the new editorial layout)
   const filterBtns = document.querySelectorAll('.project-filter-btn');
+  const projectRows = document.querySelectorAll('.project-row');
   
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -1904,22 +1904,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const filterValue = btn.getAttribute('data-filter');
 
-      cards.forEach(card => {
-        const category = card.getAttribute('data-category');
+      projectRows.forEach(row => {
+        const category = row.getAttribute('data-category');
         const matches = (filterValue === 'all' || category === filterValue);
 
         if (matches) {
-          card.classList.remove('hide-filter');
-          // Trigger reflow to make sure display:flex is applied before removing fade-out-filter
-          void card.offsetWidth;
-          card.classList.remove('fade-out-filter');
+          row.classList.remove('hide-filter');
+          // Trigger reflow to make sure display is applied before removing fade-out-filter
+          void row.offsetWidth;
+          row.classList.remove('fade-out-filter');
         } else {
-          if (card.classList.contains('hide-filter')) return;
-          card.classList.add('fade-out-filter');
+          if (row.classList.contains('hide-filter')) return;
+          row.classList.add('fade-out-filter');
           
           setTimeout(() => {
-            if (card.classList.contains('fade-out-filter')) {
-              card.classList.add('hide-filter');
+            if (row.classList.contains('fade-out-filter')) {
+              row.classList.add('hide-filter');
             }
           }, 400); // 0.4s matching CSS transition duration
         }
