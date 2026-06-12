@@ -795,7 +795,7 @@ const skillsData = {
         achievement: "Engineered single-page application router and custom trailing cursor renderer.",
         desc: "Engine for interactive frontends and scalable backend servers. Experienced with ES6+, asynchronous programming, closures, and Event Loop internals.",
         topics: ["ES6+", "Asynchronous JS (Promises, Async/Await)", "DOM Manipulation", "Event Loop", "V8 Engine Internals"],
-        projects: ["E-Commerce Platform", "Data Visualization Dashboard", "SkillSurfer Platform", "Project Nexus"]
+        projects: ["E-Commerce Platform", "SkillSurfer Platform", "Project Nexus"]
       },
       {
         name: "Python",
@@ -863,7 +863,7 @@ const skillsData = {
         achievement: "Integrated Stripe payment gateways and implemented robust token-based authorization.",
         desc: "Architectural style for designing network applications. Experienced in designing robust endpoints, secure JWT-based auth, payload validation, and HTTP status handling.",
         topics: ["HTTP Methods & Status Codes", "JWT Authentication", "Payload Validation", "CORS & Security", "API Documentation"],
-        projects: ["E-Commerce Platform", "Data Visualization Dashboard"]
+        projects: ["E-Commerce Platform", "Project Nexus"]
       }
     ]
   },
