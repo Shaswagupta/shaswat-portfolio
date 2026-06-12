@@ -17,6 +17,28 @@ if (typeof emailjs !== 'undefined' && CONFIG.EMAILJS_PUBLIC_KEY && CONFIG.EMAILJ
 
 /* ═══════════════ PROJECT CASE STUDIES DATABASE ═══════════════ */
 const caseStudies = {
+  'nexus': {
+    title: 'Project Nexus',
+    role: 'Full-Stack Developer & Lead Architect',
+    timeline: '8 Weeks',
+    github: 'https://github.com/SatyamRaj2007/nexus_coder_world.git',
+    demo: 'https://magenta-otter-3efeb5.netlify.app/',
+    techStack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'OpenStreetMap', 'OpenAI API'],
+    overview: 'A comprehensive campus super-app designed for IIT Ropar students, faculty, and staff. Integrates daily campus services, AI-powered email summarization, a peer-to-peer marketplace, ride-sharing, lost & found, interactive campus maps, and an academic study planner into a single, unified digital ecosystem.',
+    problem: 'Campus life services and tools are fragmented—emails are overwhelming, marketplace and ride-sharing are managed informally via WhatsApp group chats, and campus maps lack details, causing inefficiency and information silos.',
+    solution: 'Developed Project Nexus, a unified campus portal built with React 18 and TypeScript. Integrated OpenStreetMap for interactive directions, OpenAI API for automated email summarization and categorization, and localStorage for state persistence across modules.',
+    features: [
+      'Daily Pulse dashboard featuring AI-powered mail summarization, deadline extraction, and mess menu schedules.',
+      'Student Exchange hub integrating a peer-to-peer buy/sell marketplace, ride-sharing coordinator, and lost & found system.',
+      'Explorer\'s Guide providing an interactive campus map with OpenStreetMap, location reviews, and directions.',
+      'Academic Cockpit detailing course timetables, assignments, and an AI-powered strategic study planner.'
+    ],
+    challenges: 'Aggregating diverse services while maintaining seamless client performance on mobile screens. Solved by designing centralized React Context managers, local storage caching, and optimizing rendering layers for map components.',
+    learnings: 'Mastered leaflet mapping integration, token-based authentication flows, client-side global search algorithms, and responsive mobile-first SaaS architecture.',
+    achievement: 'Developed a feature-complete campus super-app with integrated AI utilities, interactive maps, and P2P exchange platforms.',
+    image: 'img_nexus_pulse.png',
+    images: ['img_nexus_pulse.png', 'img_nexus_exchange.png', 'img_nexus_explorer.png', 'img_nexus_library.png']
+  },
   'bank-management': {
     title: 'Bank Management System',
     role: 'Lead C++ Developer',
@@ -102,8 +124,11 @@ const caseStudies = {
     challenges: 'Preventing memory leaks while handling large collections of showtime nodes dynamically. Addressed by utilizing C++ smart pointers (std::unique_ptr and std::shared_ptr) to ensure robust RAII memory management.',
     learnings: 'Solidified knowledge of algorithmic time complexity, bit-level manipulations, memory optimization, and custom container designs in C++.',
     achievement: 'Achieved O(1) seat validation lookup using bitmask arrays.',
-    image: 'img_movie.png',
-    images: ['img_movie.png']
+    image: 'img_movie_check.jpg',
+    images: [
+      'img_movie_check.jpg',
+      'img_movie_stats.jpg'
+    ]
   },
   'plant-disease': {
     title: 'Plant Disease Classification',
@@ -126,28 +151,6 @@ const caseStudies = {
     achievement: 'Tuned ResNet50 to achieve 96.5% categorization accuracy in under 15 epochs.',
     image: 'img_plant.png',
     images: ['img_plant.png']
-  },
-  'data-visualization': {
-    title: 'Data Visualization Dashboard',
-    role: 'Front-End Developer',
-    timeline: '4 Weeks',
-    github: 'https://github.com/Shaswagupta',
-    demo: '#',
-    techStack: ['JavaScript', 'HTML5', 'CSS3', 'D3.js', 'REST API', 'JSON'],
-    overview: 'An interactive analytical platform designed to present complex dataset parameters. Incorporates interactive charts, real-time filters, animations, and clean, high-performance rendering.',
-    problem: 'Standard charting libraries struggle to render large, streaming datasets in real-time, resulting in UI freezes and poor user experience.',
-    solution: 'Utilized raw SVG bindings in D3.js and virtual container groupings. Implemented data throttling algorithms in JS to update graph coordinates in batches, maintaining a steady 60 FPS refresh rate.',
-    features: [
-      'Dynamic bar, line, scatter, and pie charts updated in real-time.',
-      'Comprehensive multi-parameter sorting and filtering pipeline.',
-      'Responsive layout scaling charts to match current screen viewport dimensions.',
-      'Custom micro-animations rendering transition states smoothly.'
-    ],
-    challenges: 'Recalculating chart bounds on dynamic window resizing without causing rendering delays. Solved by implementing debounce logic and utilizing CSS viewBox viewport configuration.',
-    learnings: 'Mastered data binding concepts in D3, coordinate math, vector scaling, SVG paths, and JavaScript performance profiling tools.',
-    achievement: 'Rendered over 5,000 active data points smoothly at 60 FPS using D3 dynamic updates.',
-    image: 'img_dashboard.png',
-    images: ['img_dashboard.png']
   },
   'skillsurfer': {
     title: 'SkillSurfer Platform',
@@ -686,7 +689,7 @@ const caseStudies = {
       }
       
       // Activate milestones as they enter scroll threshold (e.g. above 70% of viewport height)
-      let currentYear = "2023";
+      let currentYear = "2025";
       timelineItems.forEach(item => {
         const itemRect = item.getBoundingClientRect();
         if (itemRect.top < viewportHeight * 0.7) {
@@ -744,6 +747,14 @@ const caseStudies = {
     btn.classList.remove('active');
     menu.classList.remove('open');
   }));
+  document.addEventListener('click', function(e) {
+    if (menu.classList.contains('open')) {
+      if (!menu.contains(e.target) && !btn.contains(e.target)) {
+        btn.classList.remove('active');
+        menu.classList.remove('open');
+      }
+    }
+  });
 })();
 
 /* ═══════════════ INTERSECTION OBSERVER ANIMATIONS ═══════════════ */
@@ -758,11 +769,11 @@ const caseStudies = {
   document.querySelectorAll('[data-anim]').forEach(el=>observer.observe(el));
 })();
 
-/* ═══════════════ INTERACTIVE SKILLS DASHBOARD SYSTEM ═══════════════ */
+/* ═══════════════ SKILLS MOSAIC GALAXY SYSTEM ═══════════════ */
 const skillsData = {
   languages: {
     title: "Programming Languages",
-    desc: "Core languages used for systems programming, data structures, scripting, and backend applications.",
+    filterKey: "languages",
     icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
     items: [
       {
@@ -773,7 +784,8 @@ const skillsData = {
         achievement: "Core language for real-time systems; designed multithreaded ticket bookings.",
         desc: "Primary language for performance-critical systems and low-level development. Deep understanding of memory management, pointer manipulation, and STL data structures.",
         topics: ["Memory Management", "Pointers & References", "STL", "Templates", "Object-Oriented Programming (OOP)"],
-        projects: ["Bank Management System", "Movie Ticket Booking"]
+        projects: ["Bank Management System", "Movie Ticket Booking"],
+        featured: true
       },
       {
         name: "JavaScript",
@@ -783,7 +795,7 @@ const skillsData = {
         achievement: "Engineered single-page application router and custom trailing cursor renderer.",
         desc: "Engine for interactive frontends and scalable backend servers. Experienced with ES6+, asynchronous programming, closures, and Event Loop internals.",
         topics: ["ES6+", "Asynchronous JS (Promises, Async/Await)", "DOM Manipulation", "Event Loop", "V8 Engine Internals"],
-        projects: ["E-Commerce Platform", "Data Visualization Dashboard", "SkillSurfer Platform"]
+        projects: ["E-Commerce Platform", "Data Visualization Dashboard", "SkillSurfer Platform", "Project Nexus"]
       },
       {
         name: "Python",
@@ -809,7 +821,7 @@ const skillsData = {
   },
   webdev: {
     title: "Web Development",
-    desc: "Technologies and frameworks used to create premium, interactive, and high-performance web applications.",
+    filterKey: "webdev",
     icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
     items: [
       {
@@ -820,7 +832,8 @@ const skillsData = {
         achievement: "Crafted high-fidelity editorial layouts and advanced interactive CSS glassmorphisms.",
         desc: "Foundational structure and premium styling of modern web applications. Skilled in Flexbox, CSS Grid, custom variables, responsive fluid layouts, and performance optimization.",
         topics: ["Semantic HTML", "Flexbox & Grid Layouts", "CSS Variables", "Responsive Design", "Transitions & Keyframe Animations"],
-        projects: ["Portfolio Website", "E-Commerce Platform"]
+        projects: ["Portfolio Website", "E-Commerce Platform"],
+        featured: true
       },
       {
         name: "React.js",
@@ -830,7 +843,7 @@ const skillsData = {
         achievement: "Built stateful shopping carts and real-time dashboard analytics panels.",
         desc: "Component-driven frontend library. Proficient in functional components, hooks, custom state management (Context, Redux), and virtual DOM rendering optimization.",
         topics: ["React Hooks", "Context API & State Management", "Virtual DOM", "Component Lifecycle", "Performance Optimization (useMemo, useCallback)"],
-        projects: ["E-Commerce Platform", "SkillSurfer Platform"]
+        projects: ["E-Commerce Platform", "SkillSurfer Platform", "Project Nexus"]
       },
       {
         name: "Node.js",
@@ -856,7 +869,7 @@ const skillsData = {
   },
   databases: {
     title: "Databases",
-    desc: "Data persistence systems, query languages, caching layers, and database structure architectures.",
+    filterKey: "databases",
     icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>`,
     items: [
       {
@@ -877,7 +890,8 @@ const skillsData = {
         achievement: "Designed normalized tournament schemas and robust database constraints.",
         desc: "Advanced relational database system. Skilled in structural design, indexing, foreign keys, transaction handling, and SQL queries.",
         topics: ["Relational Schemas", "Foreign Key Constraints", "JSONB Support", "Views & Triggers", "Complex Queries"],
-        projects: ["E-Commerce Platform", "SkillSurfer Platform"]
+        projects: ["E-Commerce Platform", "SkillSurfer Platform"],
+        featured: true
       },
       {
         name: "MySQL",
@@ -903,7 +917,7 @@ const skillsData = {
   },
   tools: {
     title: "Tools & Platforms",
-    desc: "Modern development toolchains, containerization tools, code versioning pipelines, and visual layout frameworks.",
+    filterKey: "tools",
     icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>`,
     items: [
       {
@@ -914,7 +928,8 @@ const skillsData = {
         achievement: "Managed code reviews, complex merges, and automated site deployments.",
         desc: "Distributed version control system. Skilled in branching strategies, merge conflict resolution, pull requests, commits, and collaborative repository workflows.",
         topics: ["Branching & Merging", "Conflict Resolution", "Git Rebase & Cherry-Pick", "GitHub Actions & CI/CD", "Pull Request Workflows"],
-        projects: ["All Projects"]
+        projects: ["All Projects"],
+        featured: true
       },
       {
         name: "Docker",
@@ -950,8 +965,8 @@ const skillsData = {
   },
   aicore: {
     title: "AI/ML & Core CS",
-    desc: "Academic algorithms, software models, neural networks, object layouts, and general programming philosophies.",
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`,
+    filterKey: "aicore",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 14 18.469V19a2 2 0 1 1-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>`,
     items: [
       {
         name: "AI / ML Concepts",
@@ -961,10 +976,11 @@ const skillsData = {
         achievement: "Applied transfer learning to ResNet architectures for crop health analysis.",
         desc: "Core concepts of artificial intelligence and machine learning. Experienced in neural networks, computer vision, data preparation, and training deep learning models.",
         topics: ["Supervised Learning", "Neural Network Layers", "Convolutional Neural Networks (CNN)", "Model Tuning & Regularization", "Computer Vision Fundamentals"],
-        projects: ["Crop Disease Detector", "Plant Disease Classification"]
+        projects: ["Crop Disease Detector", "Plant Disease Classification"],
+        featured: true
       },
       {
-        name: "Data Structures (DSA)",
+        name: "Data Structures",
         level: 88,
         mastery: "Advanced",
         usage: 5,
@@ -974,7 +990,7 @@ const skillsData = {
         projects: ["Movie Ticket Booking", "Bank Management System"]
       },
       {
-        name: "Object-Oriented Programming (OOP)",
+        name: "OOP",
         level: 90,
         mastery: "Expert",
         usage: 5,
@@ -984,7 +1000,7 @@ const skillsData = {
         projects: ["Bank Management System", "Movie Ticket Booking"]
       },
       {
-        name: "Software Engineering Principles",
+        name: "Software Engineering",
         level: 82,
         mastery: "Advanced",
         usage: 5,
@@ -997,247 +1013,993 @@ const skillsData = {
   }
 };
 
-(function(){
-  const skillsTabs = document.getElementById('skillsTabs');
-  const currentCategoryTitle = document.getElementById('currentCategoryTitle');
-  const currentCategoryDesc = document.getElementById('currentCategoryDesc');
-  const skillsListContainer = document.getElementById('skillsListContainer');
-  const skillDetailPane = document.getElementById('skillDetailPane');
+(function() {
+  const filterStrip = document.getElementById('skillsFilterStrip');
+  const container = document.getElementById('skillsConstellationContainer');
+  const canvas = document.getElementById('skillsConstellationCanvas');
+  const drawerOverlay = document.getElementById('skillDrawerOverlay');
+  const drawerClose = document.getElementById('skillDrawerClose');
+  const drawerInner = document.getElementById('skillDrawerInner');
 
-  if (!skillsTabs || !skillsListContainer || !skillDetailPane) return;
+  if (!filterStrip || !canvas || !drawerInner || !drawerOverlay || !drawerClose) return;
 
-  let activeCategoryKey = 'languages';
-  let activeSkillIndex = 0;
+  const hintEl = container.querySelector('.skills-map-hint');
+  const isMobileHint = window.matchMedia('(max-width: 768px)').matches;
+  if (hintEl && isMobileHint) {
+    hintEl.innerHTML = `
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="stroke: var(--primary);"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+      Drag to pan • Pinch to zoom • Tap nodes to explore
+    `;
+  }
 
-  // Project Scroll & Highlight Trigger
-  function highlightProject(projectName) {
-    // Check ifprojectName is "All Projects"
-    if (projectName === "All Projects") {
-      const section = document.getElementById('projects');
-      if (section) {
-        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const ctx = canvas.getContext('2d');
+  let width = 0;
+  let height = 0;
+
+  let activeFilter = 'all';
+  let hoveredNode = null;
+  let transitionOpacity = 1.0;
+
+  // Zoom/pan state (centered and scaled for left-to-right tree)
+  let panX = 60;
+  let panY = 0;
+  let scale = 0.8;
+  
+  let targetPanX = 60;
+  let targetPanY = 0;
+  let targetScale = 0.8;
+
+  function resetView() {
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    if (isMobile) {
+      targetScale = Math.min(0.45, (width - 120) / 530);
+      targetPanX = 25;
+      targetPanY = 0;
+    } else {
+      targetScale = 0.8;
+      targetPanX = 60;
+      targetPanY = 0;
+    }
+    scale = targetScale;
+    panX = targetPanX;
+    panY = targetPanY;
+  }
+
+  let isDragging = false;
+  let startX = 0;
+  let startY = 0;
+  let dragX = 0;
+  let dragY = 0;
+  let dragDistance = 0;
+
+  // Helper for cubic Bezier evaluation (flowing left-to-right)
+  function getBezierPoint(t, p0, p1, p2, p3) {
+    const oneMinusT = 1 - t;
+    const term0 = oneMinusT * oneMinusT * oneMinusT;
+    const term1 = 3 * oneMinusT * oneMinusT * t;
+    const term2 = 3 * oneMinusT * t * t;
+    const term3 = t * t * t;
+    return {
+      x: term0 * p0.x + term1 * p1.x + term2 * p2.x + term3 * p3.x,
+      y: term0 * p0.y + term1 * p1.y + term2 * p2.y + term3 * p3.y
+    };
+  }
+
+  // Color mappings
+  function getMasteryColor(mastery) {
+    const m = mastery.toLowerCase();
+    if (m === 'expert') return '#dfc59f'; // Gold
+    if (m === 'advanced') return '#a8c4b8'; // Seafoam
+    return '#9ea8bf'; // Slate Blue
+  }
+
+  function hexToRGBA(hex, alpha) {
+    const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+    const fullHex = hex.replace(shorthandRegex, (m, r, g, b) => r + r + g + g + b + b);
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(fullHex);
+    return result 
+      ? `rgba(${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}, ${alpha})`
+      : hex;
+  }
+
+  // Define nodes list
+  const nodes = [];
+  const links = [];
+
+  // 1. Center node (ROOT)
+  const centerNode = {
+    id: 'center',
+    type: 'center',
+    label: 'ROOT',
+    x: -350,
+    y: 0,
+    radius: 9,
+    seed: Math.random() * 100,
+    color: '#dfc59f' // Gold matching the Champagne-Gold theme
+  };
+  nodes.push(centerNode);
+
+  // Map categories to vertical positions for hierarchical left-to-right tree
+  const catMetadata = {
+    languages: { y: -280, label: 'Languages' },
+    webdev: { y: -140, label: 'Web Development' },
+    databases: { y: 0, label: 'Databases' },
+    tools: { y: 140, label: 'Tools & Platforms' },
+    aicore: { y: 280, label: 'AI/ML & Core CS' }
+  };
+
+  let skillCount = 0;
+
+  // Build graph data
+  Object.entries(skillsData).forEach(([key, cat]) => {
+    const meta = catMetadata[key];
+    
+    const hubNode = {
+      id: 'hub_' + key,
+      type: 'hub',
+      key: key,
+      label: cat.title,
+      x: -80,
+      y: meta.y,
+      radius: 7,
+      seed: Math.random() * 100,
+      color: '#dfc59f', // Gold
+      catData: cat
+    };
+    nodes.push(hubNode);
+    
+    // Connect center to hub
+    links.push({
+      source: centerNode,
+      target: hubNode,
+      type: 'core-hub',
+      category: key
+    });
+
+    const items = cat.items;
+
+    items.forEach((skill, idx) => {
+      // Calculate skill Y coordinates based on global index to keep spacing uniform (from -332.5 to 332.5)
+      const skillY = -332.5 + skillCount * 35;
+      skillCount++;
+      
+      const skillNode = {
+        id: 'skill_' + skill.name,
+        type: 'skill',
+        name: skill.name,
+        category: key,
+        x: 180,
+        y: skillY,
+        radius: 6,
+        seed: Math.random() * 100,
+        color: '#f5e4cf', // Champagne Gold
+        data: skill,
+        catData: cat
+      };
+      nodes.push(skillNode);
+
+      // Connect hub to skill
+      links.push({
+        source: hubNode,
+        target: skillNode,
+        type: 'hub-skill',
+        category: key
+      });
+    });
+  });
+
+  // Background stars
+  const stars = [];
+  for (let i = 0; i < 80; i++) {
+    stars.push({
+      x: (Math.random() - 0.5) * 1200,
+      y: (Math.random() - 0.5) * 1200,
+      radius: Math.random() * 1.5 + 0.3,
+      alpha: Math.random(),
+      twinkleSpeed: 0.003 + Math.random() * 0.007,
+      dir: Math.random() > 0.5 ? 1 : -1
+    });
+  }
+
+  // Path particles
+  const particles = [];
+  links.forEach(link => {
+    particles.push({
+      link: link,
+      progress: Math.random(),
+      speed: 0.003 + Math.random() * 0.003
+    });
+    particles.push({
+      link: link,
+      progress: Math.random(),
+      speed: 0.003 + Math.random() * 0.003
+    });
+  });
+
+  // Shooting stars system
+  const shootingStars = [];
+
+  let isInitialized = false;
+
+  // Resize canvas
+  function resize() {
+    const rect = container.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    ctx.scale(dpr, dpr);
+    width = rect.width;
+    height = rect.height;
+
+    if (!isInitialized && width > 0) {
+      resetView();
+      isInitialized = true;
+    }
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  // Set up filter pills click handler
+  function buildFilterStrip() {
+    filterStrip.innerHTML = '';
+
+    const allPill = document.createElement('button');
+    allPill.className = 'skills-filter-pill active';
+    allPill.textContent = 'All Skills';
+    allPill.dataset.filter = 'all';
+    allPill.addEventListener('click', () => setFilter('all', allPill));
+    filterStrip.appendChild(allPill);
+
+    Object.entries(skillsData).forEach(([key, cat]) => {
+      const pill = document.createElement('button');
+      pill.className = 'skills-filter-pill';
+      pill.innerHTML = cat.icon + `<span style="margin-left:8px">${cat.title}</span>`;
+      pill.style.display = 'flex';
+      pill.style.alignItems = 'center';
+      pill.dataset.filter = key;
+      pill.addEventListener('click', () => setFilter(key, pill));
+      filterStrip.appendChild(pill);
+    });
+  }
+
+  function setFilter(key, clickedPill) {
+    // Set transition opacity to 0 to trigger a smooth fade transition
+    transitionOpacity = 0.0;
+
+    activeFilter = key;
+    document.querySelectorAll('.skills-filter-pill').forEach(p => p.classList.remove('active'));
+    
+    let targetPill = clickedPill;
+    if (!targetPill) {
+      targetPill = document.querySelector(`.skills-filter-pill[data-filter="${key}"]`);
+    }
+    if (targetPill) targetPill.classList.add('active');
+
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+    if (key === 'all') {
+      if (isMobile) {
+        targetScale = Math.min(0.45, (width - 120) / 530);
+        targetPanX = 25;
+        targetPanY = 0;
+      } else {
+        targetPanX = 60;
+        targetPanY = 0;
+        targetScale = 0.8;
       }
-      return;
+    } else {
+      // Find the hub node
+      const hub = nodes.find(n => n.type === 'hub' && n.key === key);
+      if (hub) {
+        if (isMobile) {
+          targetScale = 0.75;
+          targetPanX = 35 - hub.x * targetScale - width / 2;
+          targetPanY = -hub.y * targetScale;
+        } else {
+          targetScale = 1.25;
+          targetPanX = -hub.x * targetScale - 30; // Shift left slightly to make children fit beautifully
+          targetPanY = -hub.y * targetScale;
+        }
+      }
+    }
+  }
+
+  // Conversion helpers (screen space to map space)
+  function getMapCoords(screenX, screenY) {
+    const rect = canvas.getBoundingClientRect();
+    const x = screenX - rect.left;
+    const y = screenY - rect.top;
+    
+    const mx = (x - panX - width / 2) / scale;
+    const my = (y - panY - height / 2) / scale;
+    return { x: mx, y: my };
+  }
+
+  // Hit testing
+  function getNodeAtCoords(x, y) {
+    const time = performance.now();
+    for (let i = nodes.length - 1; i >= 0; i--) {
+      const node = nodes[i];
+      const floatAmp = node.type === 'skill' ? 4.5 : 2.5;
+      const floatX = Math.cos(time * 0.001 + node.seed) * floatAmp;
+      const floatY = Math.sin(time * 0.00085 + node.seed) * floatAmp;
+      
+      const nx = node.x + floatX;
+      const ny = node.y + floatY;
+      
+      const dx = x - nx;
+      const dy = y - ny;
+      const distSq = dx * dx + dy * dy;
+      
+      const hitRadius = node.radius + 12;
+      if (distSq < hitRadius * hitRadius) {
+        return node;
+      }
+    }
+    return null;
+  }
+
+  // Event handlers
+  canvas.addEventListener('mousemove', e => {
+    const coords = getMapCoords(e.clientX, e.clientY);
+    hoveredNode = getNodeAtCoords(coords.x, coords.y);
+    
+    if (hoveredNode) {
+      canvas.style.cursor = 'pointer';
+    } else {
+      canvas.style.cursor = isDragging ? 'grabbing' : 'grab';
     }
 
+    if (isDragging) {
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
+      
+      const maxPanX = width * 0.5;
+      const maxPanY = height * 0.5;
+      
+      targetPanX = Math.max(-maxPanX, Math.min(maxPanX, dragX + dx));
+      targetPanY = Math.max(-maxPanY, Math.min(maxPanY, dragY + dy));
+      dragDistance += Math.sqrt(dx*dx + dy*dy);
+    }
+  });
+
+  canvas.addEventListener('mousedown', e => {
+    isDragging = true;
+    startX = e.clientX;
+    startY = e.clientY;
+    dragX = panX;
+    dragY = panY;
+    dragDistance = 0;
+    canvas.style.cursor = 'grabbing';
+  });
+
+  window.addEventListener('mouseup', e => {
+    if (!isDragging) return;
+    isDragging = false;
+    canvas.style.cursor = hoveredNode ? 'pointer' : 'grab';
+    
+    if (dragDistance < 6) {
+      const coords = getMapCoords(e.clientX, e.clientY);
+      const clicked = getNodeAtCoords(coords.x, coords.y);
+      if (clicked) {
+        handleNodeClick(clicked);
+      }
+    }
+  });
+
+  // Toast warning display timeout variable
+  let toastTimeout = null;
+  const scrollToast = document.getElementById('skillsScrollToast');
+
+  canvas.addEventListener('wheel', e => {
+    // Only intercept scroll and zoom if Ctrl or Cmd key is held
+    if (e.ctrlKey || e.metaKey) {
+      e.preventDefault();
+      
+      const rect = canvas.getBoundingClientRect();
+      const mouseX = e.clientX - rect.left;
+      const mouseY = e.clientY - rect.top;
+      
+      const zoomFactor = 1.08;
+      let nextScale = targetScale;
+      
+      if (e.deltaY < 0) {
+        nextScale *= zoomFactor;
+      } else {
+        nextScale /= zoomFactor;
+      }
+      
+      nextScale = Math.max(0.5, Math.min(2.0, nextScale));
+      
+      targetPanX = mouseX - width / 2 - (mouseX - width / 2 - targetPanX) * (nextScale / targetScale);
+      targetPanY = mouseY - height / 2 - (mouseY - height / 2 - targetPanY) * (nextScale / targetScale);
+      
+      const maxPanX = width * 0.5;
+      const maxPanY = height * 0.5;
+      targetPanX = Math.max(-maxPanX, Math.min(maxPanX, targetPanX));
+      targetPanY = Math.max(-maxPanY, Math.min(maxPanY, targetPanY));
+      
+      targetScale = nextScale;
+    } else {
+      // Show warning toast that Ctrl/Cmd is required to zoom
+      if (scrollToast) {
+        scrollToast.classList.add('visible');
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => {
+          scrollToast.classList.remove('visible');
+        }, 1800);
+      }
+    }
+  }, { passive: false });
+
+  // Touch support
+  let touchStartDist = 0;
+  let touchStartScale = 1;
+  let isMobileSwipeVertical = false;
+  
+  canvas.addEventListener('touchstart', e => {
+    if (e.touches.length === 1) {
+      isDragging = true;
+      isMobileSwipeVertical = false;
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      dragX = panX;
+      dragY = panY;
+      dragDistance = 0;
+    } else if (e.touches.length === 2) {
+      isDragging = false;
+      const dx = e.touches[0].clientX - e.touches[1].clientX;
+      const dy = e.touches[0].clientY - e.touches[1].clientY;
+      touchStartDist = Math.sqrt(dx*dx + dy*dy);
+      touchStartScale = targetScale;
+    }
+  }, { passive: true });
+
+  canvas.addEventListener('touchmove', e => {
+    if (isDragging && e.touches.length === 1) {
+      const dx = e.touches[0].clientX - startX;
+      const dy = e.touches[0].clientY - startY;
+      
+      // Determine if swipe is vertical on first movement
+      if (dragDistance < 10) {
+        if (Math.abs(dy) > Math.abs(dx) * 1.3) {
+          isMobileSwipeVertical = true;
+          isDragging = false;
+          return;
+        }
+      }
+      
+      if (!isMobileSwipeVertical) {
+        const maxPanX = width * 0.5;
+        const maxPanY = height * 0.5;
+        
+        targetPanX = Math.max(-maxPanX, Math.min(maxPanX, dragX + dx));
+        targetPanY = Math.max(-maxPanY, Math.min(maxPanY, dragY + dy));
+        dragDistance += Math.sqrt(dx*dx + dy*dy);
+      }
+    } else if (e.touches.length === 2) {
+      const dx = e.touches[0].clientX - e.touches[1].clientX;
+      const dy = e.touches[0].clientY - e.touches[1].clientY;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (touchStartDist > 0) {
+        const factor = dist / touchStartDist;
+        targetScale = Math.max(0.5, Math.min(2.0, touchStartScale * factor));
+      }
+    }
+  }, { passive: true });
+
+  canvas.addEventListener('touchend', e => {
+    if (isDragging) {
+      isDragging = false;
+      if (dragDistance < 8 && e.changedTouches.length > 0) {
+        const touch = e.changedTouches[0];
+        const coords = getMapCoords(touch.clientX, touch.clientY);
+        const clicked = getNodeAtCoords(coords.x, coords.y);
+        if (clicked) {
+          handleNodeClick(clicked);
+        }
+      }
+    }
+  }, { passive: true });
+
+  function getActiveSkillsList() {
+    return nodes.filter(n => n.type === 'skill' && (activeFilter === 'all' || n.category === activeFilter));
+  }
+
+  function handleNodeClick(node) {
+    if (node.type === 'center') {
+      setFilter('all');
+    } else if (node.type === 'hub') {
+      setFilter(node.key);
+    } else if (node.type === 'skill') {
+      // Focus/pan exactly on the selected skill node
+      const isMobile = window.matchMedia('(max-width: 768px)').matches;
+      targetScale = isMobile ? 0.85 : 1.35;
+      targetPanX = isMobile ? (50 - node.x * targetScale - width / 2) : (-node.x * targetScale);
+      targetPanY = isMobile ? (-node.y * targetScale - 90) : (-node.y * targetScale);
+      openDrawer(node.data, node.catData);
+    }
+  }
+
+  function openDrawer(skill, cat) {
+    const activeSkills = getActiveSkillsList();
+    const currentIndex = activeSkills.findIndex(s => s.name === skill.name);
+    
+    const prevBtnDisabled = currentIndex <= 0 ? 'disabled style="opacity: 0.35; pointer-events: none;"' : '';
+    const nextBtnDisabled = currentIndex >= activeSkills.length - 1 ? 'disabled style="opacity: 0.35; pointer-events: none;"' : '';
+
+    const topicsHTML = skill.topics.map(t => `<span class="drawer-topic-chip">${t}</span>`).join('');
+    const projectsHTML = skill.projects.map(proj => `
+      <a href="#projects" class="drawer-project-pill" data-project-target="${proj}">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        ${proj}
+      </a>
+    `).join('');
+
+    drawerInner.innerHTML = `
+      <!-- Previous / Next Navigation -->
+      <div class="drawer-nav-bar">
+        <button class="drawer-nav-btn prev-skill-btn" ${prevBtnDisabled}>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; display: inline-block; vertical-align: middle;"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          <span style="vertical-align: middle;">Prev</span>
+        </button>
+        <span class="drawer-nav-index">
+          ${currentIndex >= 0 ? currentIndex + 1 : 1} / ${activeSkills.length}
+        </span>
+        <button class="drawer-nav-btn next-skill-btn" ${nextBtnDisabled}>
+          <span style="vertical-align: middle;">Next</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 6px; display: inline-block; vertical-align: middle;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+
+      <div class="drawer-header">
+        <div class="drawer-icon">${cat.icon}</div>
+        <div class="drawer-title-block">
+          <div class="drawer-skill-name">${skill.name}</div>
+          <div class="drawer-skill-cat">${cat.title}</div>
+        </div>
+        <span class="skill-mastery-label drawer-mastery ${skill.mastery.toLowerCase()}">${skill.mastery}</span>
+      </div>
+
+      <p class="drawer-desc">${skill.desc}</p>
+
+      <div class="drawer-achievement">
+        <div class="drawer-achievement-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p>${skill.achievement}</p>
+      </div>
+
+      <div class="drawer-section-label">Key Topics</div>
+      <div class="drawer-topics">${topicsHTML}</div>
+
+      <div class="drawer-section-label">Featured In Projects</div>
+      <div class="drawer-projects">${projectsHTML}</div>
+    `;
+
+    // Hook Next/Prev actions
+    const prevBtn = drawerInner.querySelector('.prev-skill-btn');
+    const nextBtn = drawerInner.querySelector('.next-skill-btn');
+
+    if (prevBtn && currentIndex > 0) {
+      prevBtn.addEventListener('click', () => {
+        const prevSkillNode = activeSkills[currentIndex - 1];
+        handleNodeClick(prevSkillNode);
+      });
+    }
+
+    if (nextBtn && currentIndex < activeSkills.length - 1) {
+      nextBtn.addEventListener('click', () => {
+        const nextSkillNode = activeSkills[currentIndex + 1];
+        handleNodeClick(nextSkillNode);
+      });
+    }
+
+    drawerInner.querySelectorAll('[data-project-target]').forEach(link => {
+      link.addEventListener('click', ev => {
+        ev.preventDefault();
+        closeDrawer();
+        setTimeout(() => highlightProject(link.getAttribute('data-project-target')), 150);
+      });
+    });
+
+    drawerOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function highlightProject(projectName) {
+    if (projectName === "All Projects") {
+      const section = document.getElementById('projects');
+      if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
     const rows = document.querySelectorAll('.project-row');
     let targetRow = null;
-
     rows.forEach(row => {
       const titleEl = row.querySelector('.project-row-title');
       if (titleEl && titleEl.textContent.trim().toLowerCase() === projectName.trim().toLowerCase()) {
         targetRow = row;
       }
     });
-
     if (targetRow) {
-      // UX Enhancement: If target row is hidden by filter, reset filters to "all"
       if (targetRow.classList.contains('hide-filter') || targetRow.classList.contains('fade-out-filter')) {
         const allBtn = document.querySelector('.project-filter-btn[data-filter="all"]');
-        if (allBtn) {
-          allBtn.click();
-        }
+        if (allBtn) allBtn.click();
       }
-
-      // Wait a moment for filter transition to start before scrolling and pulsing
       setTimeout(() => {
         targetRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
         targetRow.classList.add('project-highlight-pulse');
-        setTimeout(() => {
-          targetRow.classList.remove('project-highlight-pulse');
-        }, 6000);
+        setTimeout(() => targetRow.classList.remove('project-highlight-pulse'), 6000);
       }, 150);
     } else {
-      // Fallback: scroll to projects section
       const section = document.getElementById('projects');
-      if (section) {
-        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  function closeDrawer() {
+    drawerOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+    
+    // Re-center view on category or all
+    if (activeFilter === 'all') {
+      resetView();
+    } else {
+      const hub = nodes.find(n => n.type === 'hub' && n.key === activeFilter);
+      if (hub) {
+        const isMobile = window.matchMedia('(max-width: 768px)').matches;
+        targetScale = isMobile ? 0.75 : 1.25;
+        targetPanX = isMobile ? (35 - hub.x * targetScale - width / 2) : (-hub.x * targetScale - 30);
+        targetPanY = -hub.y * targetScale;
       }
     }
   }
 
-  // Render Category Tabs
-  function renderTabs() {
-    skillsTabs.innerHTML = '';
-    Object.keys(skillsData).forEach(key => {
-      const cat = skillsData[key];
-      const btn = document.createElement('button');
-      btn.className = `skill-tab-btn ${key === activeCategoryKey ? 'active' : ''}`;
-      btn.innerHTML = `${cat.icon}<span>${cat.title}</span>`;
-      btn.addEventListener('click', () => selectCategory(key));
-      skillsTabs.appendChild(btn);
-    });
-  }
+  drawerClose && drawerClose.addEventListener('click', closeDrawer);
+  drawerOverlay && drawerOverlay.addEventListener('click', e => {
+    if (e.target === drawerOverlay) closeDrawer();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeDrawer();
+  });
 
-  // Handle Category Selection
-  function selectCategory(key) {
-    if (activeCategoryKey === key) return;
-    activeCategoryKey = key;
-    activeSkillIndex = 0;
-    
-    // Update Tab UI
-    document.querySelectorAll('.skill-tab-btn').forEach(btn => btn.classList.remove('active'));
-    renderTabs();
-    
-    // Update Header
-    currentCategoryTitle.textContent = skillsData[key].title;
-    currentCategoryDesc.textContent = skillsData[key].desc;
-    
-    // Render Skills List and detail pane
-    renderSkillsList();
-    updateSkillDetail();
-  }
+  // Render loop
+  function render() {
+    // Clamp targets before interpolating to ensure boundaries are maintained
+    const maxPanX = width * 0.5;
+    const maxPanY = height * 0.5;
+    targetPanX = Math.max(-maxPanX, Math.min(maxPanX, targetPanX));
+    targetPanY = Math.max(-maxPanY, Math.min(maxPanY, targetPanY));
+    targetScale = Math.max(0.5, Math.min(2.0, targetScale));
 
-  // Render Left Skills List
-  function renderSkillsList() {
-    skillsListContainer.innerHTML = '';
-    const skills = skillsData[activeCategoryKey].items;
-    
-    skills.forEach((skill, index) => {
-      const item = document.createElement('div');
-      item.className = `skill-dashboard-item ${index === activeSkillIndex ? 'active' : ''}`;
-      item.style.setProperty('--i', index); // Set custom property for stagger delay
-      item.innerHTML = `
-        <div class="skill-item-info">
-          <span class="skill-item-name">${skill.name}</span>
-          <div class="skill-item-mini-bar">
-            <div class="skill-item-mini-fill" style="width: ${skill.level}%"></div>
-          </div>
-        </div>
-        <span class="skill-item-val">${skill.level}%</span>
-      `;
-      item.addEventListener('click', () => selectSkill(index));
-      skillsListContainer.appendChild(item);
-    });
-  }
+    panX += (targetPanX - panX) * 0.085;
+    panY += (targetPanY - panY) * 0.085;
+    scale += (targetScale - scale) * 0.085;
 
-  // Handle Skill Selection
-  function selectSkill(index) {
-    if (activeSkillIndex === index) return;
-    activeSkillIndex = index;
-    
-    // Update active row class
-    document.querySelectorAll('.skill-dashboard-item').forEach((item, idx) => {
-      if (idx === index) {
-        item.classList.add('active');
-      } else {
-        item.classList.remove('active');
-      }
-    });
-
-    updateSkillDetail();
-    
-    // Auto-scroll to detail panel on mobile screens
-    if (window.innerWidth <= 900) {
-      setTimeout(() => {
-        const detailPane = document.getElementById('skillDetailPane');
-        if (detailPane) {
-          detailPane.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-      }, 200);
+    // Interpolate transition opacity for filter fade effect
+    if (transitionOpacity < 1.0) {
+      transitionOpacity += (1.0 - transitionOpacity) * 0.12;
+      if (transitionOpacity > 0.99) transitionOpacity = 1.0;
     }
-  }
 
-  // Update Detail Panel on Right
-  function updateSkillDetail() {
-    const skill = skillsData[activeCategoryKey].items[activeSkillIndex];
-    
-    // Add switching effect (fade)
-    skillDetailPane.classList.add('switching');
-    
-    setTimeout(() => {
-      // Calculate SVG stroke offset: circumference is 2 * PI * r = 2 * 3.14159 * 70 = 439.82
-      const radius = 70;
-      const circumference = 2 * Math.PI * radius;
-      const offset = circumference - (skill.level / 100) * circumference;
+    ctx.clearRect(0, 0, width, height);
 
-      // Construct usage rating dots
-      let dotsHTML = '';
-      for (let i = 1; i <= 5; i++) {
-        dotsHTML += `<div class="usage-dot ${i <= skill.usage ? 'active' : ''}"></div>`;
+    const time = performance.now();
+
+    // Ambient living cosmic nebula atmosphere (Space-Black & Slate theme)
+    const glowX = width / 2 + Math.cos(time * 0.00018) * 55;
+    const glowY = height / 2 + Math.sin(time * 0.00012) * 35;
+    const bgGlow = ctx.createRadialGradient(glowX, glowY, 20, glowX, glowY, Math.max(width, height));
+    bgGlow.addColorStop(0, '#07090c'); // Deeper Slate Black core
+    bgGlow.addColorStop(0.5, '#030406'); // Pitch Space Black
+    bgGlow.addColorStop(1, '#010203');
+    ctx.fillStyle = bgGlow;
+    ctx.fillRect(0, 0, width, height);
+
+    stars.forEach(star => {
+      star.alpha += star.dir * star.twinkleSpeed;
+      if (star.alpha >= 0.95) {
+        star.alpha = 0.95;
+        star.dir = -1;
+      } else if (star.alpha <= 0.15) {
+        star.alpha = 0.15;
+        star.dir = 1;
       }
+      ctx.fillStyle = `rgba(223, 197, 159, ${star.alpha * 0.6})`;
+      ctx.beginPath();
+      const sx = width / 2 + star.x + panX * 0.25;
+      const sy = height / 2 + star.y + panY * 0.25;
+      
+      ctx.arc(sx, sy, star.radius, 0, Math.PI * 2);
+      ctx.fill();
+    });
 
-      // Construct project links
-      const projectPills = skill.projects.map(proj => {
-        return `<a href="#projects" class="project-pill" data-project-target="${proj}">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
-          ${proj}
-        </a>`;
-      }).join(' ');
-
-      const topicsHTML = skill.topics.map(topic => `<span class="skill-detail-tag">${topic}</span>`).join('');
-
-      skillDetailPane.innerHTML = `
-        <div class="radial-progress-wrapper">
-          <svg class="radial-progress-svg" viewBox="0 0 160 160">
-            <circle class="radial-track" cx="80" cy="80" r="70" />
-            <circle class="radial-fill" cx="80" cy="80" r="70" style="stroke-dasharray: ${circumference}; stroke-dashoffset: ${circumference};" />
-          </svg>
-          <div class="radial-value-text">
-            <span>${skill.level}</span>
-            <span class="radial-value-percent">%</span>
-          </div>
-        </div>
-        
-        <div class="skill-mastery-badge">${skill.mastery}</div>
-        
-        <div class="skill-detail-body">
-          <h3 class="skill-detail-title font-serif">${skill.name}</h3>
-          <p class="skill-detail-desc">${skill.desc}</p>
-          
-          <div class="skill-detail-meta-row">
-            <span>Usage Frequency</span>
-            <div class="skill-usage-dots">
-              ${dotsHTML}
-            </div>
-          </div>
-
-          <p class="skill-detail-desc" style="font-style: italic; font-size: 0.85rem; color: var(--primary); margin-top: -10px; margin-bottom: 20px; border-left: 2px solid var(--primary); padding-left: 10px; text-align: left; max-width: 100%;">
-            "${skill.achievement}"
-          </p>
-          
-          <div class="skill-detail-section">
-            <h4>Key Concepts & Topics</h4>
-            <div class="skill-detail-tags">
-              ${topicsHTML}
-            </div>
-          </div>
-          
-          <div class="skill-detail-section">
-            <h4>Featured In Projects</h4>
-            <div class="skill-detail-tags">
-              ${projectPills}
-            </div>
-          </div>
-        </div>
-      `;
-
-      // Set up click handlers for project pills
-      skillDetailPane.querySelectorAll('[data-project-target]').forEach(link => {
-        link.addEventListener('click', (ev) => {
-          ev.preventDefault();
-          const targetProject = link.getAttribute('data-project-target');
-          highlightProject(targetProject);
-        });
+    // Update and draw shooting stars in the background
+    if (shootingStars.length < 2 && Math.random() < 0.006) {
+      const angle = Math.PI * 0.25 + (Math.random() - 0.5) * 0.25;
+      const speed = 7 + Math.random() * 9;
+      shootingStars.push({
+        x: (Math.random() - 0.5) * width * 1.5,
+        y: (Math.random() - 0.5) * height * 1.5,
+        dx: Math.cos(angle) * speed,
+        dy: Math.sin(angle) * speed,
+        length: 50 + Math.random() * 80,
+        width: 0.8 + Math.random() * 1.0,
+        alpha: 1.0,
+        decay: 0.015 + Math.random() * 0.015
       });
+    }
 
-      // Trigger drawing animation in next tick
-      setTimeout(() => {
-        const fill = skillDetailPane.querySelector('.radial-fill');
-        if (fill) {
-          fill.style.strokeDashoffset = offset;
+    for (let i = shootingStars.length - 1; i >= 0; i--) {
+      const ss = shootingStars[i];
+      ss.x += ss.dx;
+      ss.y += ss.dy;
+      ss.alpha -= ss.decay;
+      if (ss.alpha <= 0) {
+        shootingStars.splice(i, 1);
+        continue;
+      }
+
+      // Parallax offset matching stars depth
+      const sx = ss.x + panX * 0.15;
+      const sy = ss.y + panY * 0.15;
+
+      const grad = ctx.createLinearGradient(
+        sx, sy,
+        sx - ss.dx * (ss.length / 10), sy - ss.dy * (ss.length / 10)
+      );
+      grad.addColorStop(0, `rgba(255, 255, 255, ${ss.alpha})`);
+      grad.addColorStop(0.15, `rgba(223, 197, 159, ${ss.alpha * 0.7})`);
+      grad.addColorStop(1, 'rgba(223, 197, 159, 0)');
+
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = ss.width;
+      ctx.beginPath();
+      ctx.moveTo(sx, sy);
+      ctx.lineTo(sx - ss.dx * (ss.length / 10), sy - ss.dy * (ss.length / 10));
+      ctx.stroke();
+    }
+
+    nodes.forEach(node => {
+      // Gentle sway animation for a clean tree structure feel
+      const floatAmp = node.type === 'skill' ? 1.5 : 1.0;
+      node.floatX = Math.cos(time * 0.001 + node.seed) * floatAmp;
+      node.floatY = Math.sin(time * 0.00085 + node.seed) * floatAmp;
+      
+      node.rx = node.x + node.floatX;
+      node.ry = node.y + node.floatY;
+    });
+
+    ctx.save();
+    ctx.translate(panX + width / 2, panY + height / 2);
+    ctx.scale(scale, scale);
+    ctx.globalAlpha = transitionOpacity;
+
+    // Render connection S-curves (Gold curves theme)
+    links.forEach(link => {
+      const s = link.source;
+      const t = link.target;
+
+      let opacity = 0.18;
+      if (activeFilter === 'all') {
+        opacity = link.type === 'core-hub' ? 0.3 : 0.2;
+      } else if (link.category === activeFilter) {
+        opacity = 0.65;
+      }
+
+      // Spotlight effect on hovered node connections
+      if (hoveredNode) {
+        const isConnected = (s.id === hoveredNode.id || t.id === hoveredNode.id);
+        if (isConnected) {
+          opacity = 0.85;
+        } else {
+          opacity *= 0.15; // Dim unrelated lines
         }
-      }, 50);
+      }
 
-      skillDetailPane.classList.remove('switching');
-    }, 150);
+      // Draw curve with translucent gold matching the theme
+      ctx.strokeStyle = `rgba(223, 197, 159, ${opacity})`;
+      ctx.lineWidth = hoveredNode && (s.id === hoveredNode.id || t.id === hoveredNode.id) ? 1.8 : 1.0;
+      
+      const midX = s.rx + (t.rx - s.rx) * 0.5;
+      ctx.beginPath();
+      ctx.moveTo(s.rx, s.ry);
+      ctx.bezierCurveTo(midX, s.ry, midX, t.ry, t.rx, t.ry);
+      ctx.stroke();
+    });
+
+    // Render particles flowing along Bezier curves (Gold particles theme)
+    particles.forEach(p => {
+      const link = p.link;
+      const s = link.source;
+      const t = link.target;
+
+      if (activeFilter !== 'all' && link.category !== activeFilter) return;
+
+      p.progress += p.speed;
+      if (p.progress >= 1) p.progress = 0;
+
+      const midX = s.rx + (t.rx - s.rx) * 0.5;
+      const pt = getBezierPoint(p.progress, 
+        { x: s.rx, y: s.ry },
+        { x: midX, y: s.ry },
+        { x: midX, y: t.ry },
+        { x: t.rx, y: t.ry }
+      );
+      const px = pt.x;
+      const py = pt.y;
+
+      let alpha = 0.45;
+      if (hoveredNode && (s.id === hoveredNode.id || t.id === hoveredNode.id)) {
+        alpha = 0.95;
+      }
+
+      ctx.fillStyle = `rgba(223, 197, 159, ${alpha})`;
+      ctx.shadowColor = '#dfc59f';
+      ctx.shadowBlur = 6;
+      
+      ctx.beginPath();
+      ctx.arc(px, py, 1.8, 0, Math.PI * 2);
+      ctx.fill();
+      
+      ctx.shadowBlur = 0;
+    });
+
+    nodes.forEach(node => {
+      let opacity = 1.0;
+      if (activeFilter !== 'all') {
+        if (node.type === 'center') opacity = 0.3;
+        else if (node.type === 'hub' && node.key !== activeFilter) opacity = 0.22;
+        else if (node.type === 'skill' && node.category !== activeFilter) opacity = 0.15;
+      }
+
+      // Spotlight effect on nodes when hovering
+      if (hoveredNode) {
+        const isHovered = hoveredNode.id === node.id;
+        const isConnected = links.some(l => 
+          (l.source.id === hoveredNode.id && l.target.id === node.id) ||
+          (l.target.id === hoveredNode.id && l.source.id === node.id)
+        );
+        
+        if (isHovered) {
+          opacity = 1.0;
+        } else if (isConnected) {
+          opacity = 0.9;
+        } else {
+          opacity *= 0.18; // Dim unrelated nodes
+        }
+      }
+
+      const isHovered = hoveredNode && hoveredNode.id === node.id;
+      const radius = isHovered ? node.radius * 1.25 : node.radius;
+
+      // Draw concentric expanding energy waves under hovered node
+      if (isHovered && opacity > 0.3) {
+        const pulseCycle = 1800;
+        const tCycle1 = (time % pulseCycle) / pulseCycle;
+        const r1 = radius * (1.0 + tCycle1 * 1.3);
+        const a1 = (1.0 - tCycle1) * 0.35 * opacity;
+
+        ctx.strokeStyle = hexToRGBA(node.color, a1);
+        ctx.lineWidth = 1.0;
+        ctx.beginPath();
+        ctx.arc(node.rx, node.ry, r1, 0, Math.PI * 2);
+        ctx.stroke();
+
+        const tCycle2 = ((time + pulseCycle / 2) % pulseCycle) / pulseCycle;
+        const r2 = radius * (1.0 + tCycle2 * 1.3);
+        const a2 = (1.0 - tCycle2) * 0.35 * opacity;
+
+        ctx.strokeStyle = hexToRGBA(node.color, a2);
+        ctx.lineWidth = 1.0;
+        ctx.beginPath();
+        ctx.arc(node.rx, node.ry, r2, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+
+      // Glowing dot shadow
+      ctx.shadowColor = node.color;
+      ctx.shadowBlur = isHovered ? 18 : 8;
+
+      // Draw the solid dot
+      ctx.fillStyle = `rgba(7, 9, 12, ${opacity})`;
+      ctx.strokeStyle = node.color;
+      ctx.lineWidth = isHovered ? 2.5 : 1.5;
+      
+      ctx.beginPath();
+      ctx.arc(node.rx, node.ry, radius, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+      
+      // Inner dot matching target design
+      ctx.fillStyle = node.color;
+      ctx.beginPath();
+      ctx.arc(node.rx, node.ry, radius * 0.45, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Disable shadow blur for text drawing to keep it sharp
+      ctx.shadowBlur = 0;
+
+      // Text label drawing
+      let textOpacity = opacity;
+      if (activeFilter !== 'all' && node.category !== activeFilter && node.type !== 'center') {
+        textOpacity = 0.15;
+      } else if (!isHovered && activeFilter === 'all') {
+        textOpacity = 0.75;
+      } else {
+        textOpacity = 1.0;
+      }
+
+      // Draw label text (Soft Ivory normally, highlighted Gold on hover)
+      if (isHovered) {
+        ctx.fillStyle = `rgba(223, 197, 159, ${textOpacity})`;
+      } else {
+        ctx.fillStyle = `rgba(244, 243, 240, ${textOpacity})`;
+      }
+
+      if (node.type === 'center') {
+        ctx.font = `bold 12px 'Plus Jakarta Sans', sans-serif`;
+        ctx.textAlign = 'right';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(node.label, node.rx - 15, node.ry);
+      } else if (node.type === 'hub') {
+        ctx.font = `bold 11px 'Plus Jakarta Sans', sans-serif`;
+        ctx.textAlign = 'right';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(node.label, node.rx - 15, node.ry);
+      } else {
+        ctx.font = node.data.featured 
+          ? `bold 11px 'Plus Jakarta Sans', sans-serif`
+          : `500 10.5px 'Plus Jakarta Sans', sans-serif`;
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(node.name, node.rx + 15, node.ry);
+      }
+    });
+
+    ctx.restore();
+
+    requestAnimationFrame(render);
   }
 
-  // Initialize
-  renderTabs();
-  renderSkillsList();
-  updateSkillDetail();
+  // Floating Controls Event Listeners
+  const btnZoomIn = document.getElementById('skillsZoomIn');
+  const btnZoomOut = document.getElementById('skillsZoomOut');
+  const btnReset = document.getElementById('skillsReset');
+
+  if (btnZoomIn) {
+    btnZoomIn.addEventListener('click', () => {
+      let nextScale = Math.min(2.0, targetScale * 1.25);
+      targetPanX = targetPanX * (nextScale / targetScale);
+      targetPanY = targetPanY * (nextScale / targetScale);
+      targetScale = nextScale;
+    });
+  }
+
+  if (btnZoomOut) {
+    btnZoomOut.addEventListener('click', () => {
+      let nextScale = Math.max(0.5, targetScale / 1.25);
+      targetPanX = targetPanX * (nextScale / targetScale);
+      targetPanY = targetPanY * (nextScale / targetScale);
+      targetScale = nextScale;
+    });
+  }
+
+  if (btnReset) {
+    btnReset.addEventListener('click', () => {
+      resetView();
+      activeFilter = 'all';
+      document.querySelectorAll('.skills-filter-pill').forEach(p => p.classList.remove('active'));
+      const allPill = document.querySelector('.skills-filter-pill[data-filter="all"]');
+      if (allPill) allPill.classList.add('active');
+    });
+  }
+
+  buildFilterStrip();
+  requestAnimationFrame(render);
 })();
+
+
 
 
 /* ═══════════════ CASE STUDY OVERLAY ROUTING SYSTEM ═══════════════ */
@@ -1266,9 +2028,27 @@ const skillsData = {
     document.getElementById('caseStudyLearnings').textContent = p.learnings;
     document.getElementById('caseStudyAchievement').textContent = p.achievement;
     
-    // Links
-    document.getElementById('caseStudyGithub').href = p.github;
-    document.getElementById('caseStudyDemo').href = p.demo;
+    // Links - only show buttons if valid link is provided
+    const githubLink = document.getElementById('caseStudyGithub');
+    const demoLink = document.getElementById('caseStudyDemo');
+    
+    if (githubLink) {
+      if (p.github && p.github !== '#') {
+        githubLink.style.display = 'inline-flex';
+        githubLink.href = p.github;
+      } else {
+        githubLink.style.display = 'none';
+      }
+    }
+    
+    if (demoLink) {
+      if (p.demo && p.demo !== '#') {
+        demoLink.style.display = 'inline-flex';
+        demoLink.href = p.demo;
+      } else {
+        demoLink.style.display = 'none';
+      }
+    }
     
     // Image Gallery
     const imgEl = document.getElementById('caseStudyImage');
@@ -1308,10 +2088,11 @@ const skillsData = {
           thumb.classList.add('active');
           
           setTimeout(() => {
-            imgEl.src = targetSrc;
+            // Set event handler before updating src to prevent race conditions
             imgEl.onload = () => {
               imgEl.classList.remove('changing');
             };
+            imgEl.src = targetSrc;
           }, 250);
         });
       });
@@ -1355,18 +2136,30 @@ const skillsData = {
 
   window.addEventListener('hashchange', handleRouting);
   window.addEventListener('load', handleRouting);
+  
+  // Immediately handle routing if script loads after DOM load or hash is already set
+  if (window.location.hash) {
+    handleRouting();
+  }
 
   // Close handlers
   if (closeBtn) {
     closeBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      history.replaceState(null, null, ' ');
-      hideCaseStudy();
+      // Simply clear the hash which automatically triggers hashchange and closes the modal
+      window.location.hash = '';
     });
   }
   
   overlay.addEventListener('click', (e) => {
     if (e.target === overlay) {
+      window.location.hash = '';
+    }
+  });
+
+  // Esc key closes the overlay
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) {
       window.location.hash = '';
     }
   });
@@ -2006,6 +2799,13 @@ document.addEventListener('DOMContentLoaded', () => {
 (function() {
   const pill = document.getElementById('projectCursorPill');
   if (!pill) return;
+
+  // Disable cursor follower pill on touch devices where hover is simulated
+  if (!window.matchMedia('(pointer: fine)').matches) {
+    pill.style.display = 'none';
+    return;
+  }
+
   let pillX = 0, pillY = 0, curX = 0, curY = 0;
   document.addEventListener('mousemove', e => { curX = e.clientX; curY = e.clientY; });
   function animatePill() {
