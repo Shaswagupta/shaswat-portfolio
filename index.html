@@ -140,23 +140,29 @@
       <h2 class="section-title"><span class="gradient-text">Technical Skills</span></h2>
       <p class="section-subtitle">Classified expert areas and technical capabilities</p>
       
-      <div class="skills-dashboard-wrapper" data-anim="fade-up">
-        <!-- Interactive Category Tabs -->
-        <div class="skills-category-tabs" id="skillsTabs"></div>
+      <!-- Filter Strip -->
+      <div class="skills-filter-strip" id="skillsFilterStrip" data-anim="fade-up"></div>
+
+      <!-- Skills Constellation Map -->
+      <div class="skills-constellation-container" id="skillsConstellationContainer" data-anim="fade-up">
+        <canvas id="skillsConstellationCanvas"></canvas>
         
-        <!-- Main Dashboard Console -->
-        <div class="skills-dashboard glass-card">
-          <!-- Left side: Skills List -->
-          <div class="skills-list-column">
-            <div class="skills-list-header">
-              <h3 id="currentCategoryTitle">Programming Languages</h3>
-              <p id="currentCategoryDesc">Languages used for systems and application development.</p>
-            </div>
-            <div class="skills-list-container" id="skillsListContainer"></div>
-          </div>
-          
-          <!-- Right side: Skill Deep Dive Detail Pane -->
-          <div class="skills-detail-column" id="skillDetailPane"></div>
+        <!-- Floating Controls -->
+        <div class="skills-map-controls">
+          <button class="skills-control-btn" id="skillsZoomIn" title="Zoom In" aria-label="Zoom In">+</button>
+          <button class="skills-control-btn" id="skillsZoomOut" title="Zoom Out" aria-label="Zoom Out">−</button>
+          <button class="skills-control-btn" id="skillsReset" title="Reset View" aria-label="Reset View">⊙</button>
+        </div>
+
+        <!-- Scroll Hijacking Toast Warning -->
+        <div class="skills-scroll-toast" id="skillsScrollToast">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Hold Ctrl / Cmd + Scroll to zoom map
+        </div>
+
+        <div class="skills-map-hint">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="stroke: var(--primary);"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          Drag to pan • Scroll to zoom • Click nodes to explore
         </div>
       </div>
     </div>
@@ -692,6 +698,14 @@
         <button id="markReadBtn" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem;">Mark as Read</button>
         <button id="deleteDetailBtn" class="btn" style="padding: 8px 20px; font-size: 0.9rem; background: rgba(239, 68, 68, 0.2); border: 1px solid rgba(239, 68, 68, 0.4); color: #fca5a5;">Delete Message</button>
       </div>
+    </div>
+  </div>
+
+  <!-- Skill Drawer Overlay Modal -->
+  <div class="skill-drawer-overlay" id="skillDrawerOverlay">
+    <div class="skill-drawer">
+      <button class="skill-drawer-close" id="skillDrawerClose" aria-label="Close Drawer">&times;</button>
+      <div class="skill-drawer-inner" id="skillDrawerInner"></div>
     </div>
   </div>
 
