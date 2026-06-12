@@ -3961,19 +3961,12 @@ body {
 
 @media (max-width: 768px) {
   .movie-collage {
-    width: 95%;
-    height: 90%;
-  }
-  .screen-movie-stats, .screen-movie-layout, .screen-movie-status {
-    display: none !important;
-  }
-  .screen-movie-available {
     width: 90%;
-    height: 90%;
-    top: 5%;
-    left: 5%;
-    transform: none !important;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+    height: 85%;
+    transform: scale(0.9);
+  }
+  .screen-movie-stats, .screen-movie-layout, .screen-movie-status, .screen-movie-available {
+    display: block !important;
   }
 }
 
@@ -4092,19 +4085,12 @@ body {
 
 @media (max-width: 768px) {
   .skillsurfer-collage {
-    width: 95%;
-    height: 90%;
-  }
-  .screen-login, .screen-event, .screen-analytics {
-    display: none !important;
-  }
-  .screen-profile {
     width: 90%;
-    height: 90%;
-    top: 5%;
-    left: 5%;
-    transform: none !important;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+    height: 85%;
+    transform: scale(0.9);
+  }
+  .screen-login, .screen-event, .screen-analytics, .screen-profile {
+    display: block !important;
   }
 }
 
@@ -4282,18 +4268,11 @@ body {
 
 @media (max-width: 768px) {
   .nexus-collage {
-    width: 95%;
-    height: 90%;
-  }
-  .screen-nexus-library, .screen-nexus-explorer, .screen-nexus-exchange {
-    display: none !important;
-  }
-  .screen-nexus-pulse {
     width: 90%;
-    height: 90%;
-    top: 5%;
-    left: 5%;
-    transform: none !important;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+    height: 85%;
+    transform: scale(0.9);
+  }
+  .screen-nexus-library, .screen-nexus-explorer, .screen-nexus-exchange, .screen-nexus-pulse {
+    display: block !important;
   }
 }
