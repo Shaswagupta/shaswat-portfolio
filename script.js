@@ -795,7 +795,7 @@ const skillsData = {
         achievement: "Engineered single-page application router and custom trailing cursor renderer.",
         desc: "Engine for interactive frontends and scalable backend servers. Experienced with ES6+, asynchronous programming, closures, and Event Loop internals.",
         topics: ["ES6+", "Asynchronous JS (Promises, Async/Await)", "DOM Manipulation", "Event Loop", "V8 Engine Internals"],
-        projects: ["E-Commerce Platform", "SkillSurfer Platform", "Project Nexus"]
+        projects: ["SkillSurfer Platform", "Project Nexus"]
       },
       {
         name: "Python",
@@ -805,7 +805,7 @@ const skillsData = {
         achievement: "Trained Convolutional Neural Networks achieving 95%+ classification accuracy.",
         desc: "Language of choice for data scripting, automation, and machine learning models. Skilled in mathematical libraries and scripting pipelines.",
         topics: ["Data Analysis (Pandas, NumPy)", "File I/O", "Automation Scripts", "TensorFlow & PyTorch", "Flask & FastAPI"],
-        projects: ["Crop Disease Detector", "Plant Disease Classification"]
+        projects: ["Crop Disease Detector"]
       },
       {
         name: "SQL",
@@ -815,7 +815,7 @@ const skillsData = {
         achievement: "Optimized multi-table joins and defined relational schemas for e-commerce stores.",
         desc: "Relational database querying language. Proficient in database normalization, complex joins, indexing, and transaction safety.",
         topics: ["Relational Algebra", "Database Joins & Subqueries", "Indexing & Optimization", "ACID Compliance", "Schema Design"],
-        projects: ["E-Commerce Platform"]
+        projects: []
       }
     ]
   },
@@ -832,7 +832,7 @@ const skillsData = {
         achievement: "Crafted high-fidelity editorial layouts and advanced interactive CSS glassmorphisms.",
         desc: "Foundational structure and premium styling of modern web applications. Skilled in Flexbox, CSS Grid, custom variables, responsive fluid layouts, and performance optimization.",
         topics: ["Semantic HTML", "Flexbox & Grid Layouts", "CSS Variables", "Responsive Design", "Transitions & Keyframe Animations"],
-        projects: ["Portfolio Website", "E-Commerce Platform"],
+        projects: ["Portfolio Website"],
         featured: true
       },
       {
@@ -843,7 +843,7 @@ const skillsData = {
         achievement: "Built stateful shopping carts and real-time dashboard analytics panels.",
         desc: "Component-driven frontend library. Proficient in functional components, hooks, custom state management (Context, Redux), and virtual DOM rendering optimization.",
         topics: ["React Hooks", "Context API & State Management", "Virtual DOM", "Component Lifecycle", "Performance Optimization (useMemo, useCallback)"],
-        projects: ["E-Commerce Platform", "SkillSurfer Platform", "Project Nexus"]
+        projects: ["SkillSurfer Platform", "Project Nexus"]
       },
       {
         name: "Node.js",
@@ -853,7 +853,7 @@ const skillsData = {
         achievement: "Engineered secure backend APIs handling user authentication and payment intents.",
         desc: "JavaScript runtime for building scalable server-side applications. Skilled in Express routing, middleware, authentication gates, and REST API design.",
         topics: ["Express.js Framework", "Middleware Architecture", "Event-Driven Programming", "HTTP Protocols & Security Headers", "npm & Package Management"],
-        projects: ["E-Commerce Platform"]
+        projects: []
       },
       {
         name: "REST APIs",
@@ -863,7 +863,7 @@ const skillsData = {
         achievement: "Integrated Stripe payment gateways and implemented robust token-based authorization.",
         desc: "Architectural style for designing network applications. Experienced in designing robust endpoints, secure JWT-based auth, payload validation, and HTTP status handling.",
         topics: ["HTTP Methods & Status Codes", "JWT Authentication", "Payload Validation", "CORS & Security", "API Documentation"],
-        projects: ["E-Commerce Platform", "Project Nexus"]
+        projects: ["Project Nexus"]
       }
     ]
   },
@@ -880,7 +880,7 @@ const skillsData = {
         achievement: "Configured document models and relational population for commerce systems.",
         desc: "NoSQL document store used for flexible data storage. Experienced with Mongoose schemas, aggregation pipelines, validation, and database connections.",
         topics: ["BSON Document Storage", "Mongoose Schemas", "Aggregation Pipelines", "Indexing", "Database Connections"],
-        projects: ["E-Commerce Platform"]
+        projects: []
       },
       {
         name: "PostgreSQL",
@@ -890,7 +890,7 @@ const skillsData = {
         achievement: "Designed normalized tournament schemas and robust database constraints.",
         desc: "Advanced relational database system. Skilled in structural design, indexing, foreign keys, transaction handling, and SQL queries.",
         topics: ["Relational Schemas", "Foreign Key Constraints", "JSONB Support", "Views & Triggers", "Complex Queries"],
-        projects: ["E-Commerce Platform", "SkillSurfer Platform"],
+        projects: ["SkillSurfer Platform"],
         featured: true
       },
       {
@@ -911,7 +911,7 @@ const skillsData = {
         achievement: "Deployed session stores with automatic expiration to optimize response speeds.",
         desc: "In-memory key-value database used for caching and lightning-fast session storage. Experienced in basic operations and key expiration structures.",
         topics: ["In-Memory Storage", "Caching Strategies", "Key Expiration", "Data Types (Strings, Hashes, Lists)", "Session Management"],
-        projects: ["E-Commerce Platform"]
+        projects: []
       }
     ]
   },
@@ -939,7 +939,7 @@ const skillsData = {
         achievement: "Containerized multi-container Web apps for consistent local environments.",
         desc: "Containerization platform to build and ship applications. Familiar with writing Dockerfiles, defining compose networks, managing volumes, and deploying isolated stacks.",
         topics: ["Dockerfiles", "Docker Compose", "Container Networking", "Volume Persistence", "Image Optimization"],
-        projects: ["E-Commerce Platform"]
+        projects: []
       },
       {
         name: "VS Code",
@@ -976,7 +976,7 @@ const skillsData = {
         achievement: "Applied transfer learning to ResNet architectures for crop health analysis.",
         desc: "Core concepts of artificial intelligence and machine learning. Experienced in neural networks, computer vision, data preparation, and training deep learning models.",
         topics: ["Supervised Learning", "Neural Network Layers", "Convolutional Neural Networks (CNN)", "Model Tuning & Regularization", "Computer Vision Fundamentals"],
-        projects: ["Crop Disease Detector", "Plant Disease Classification"],
+        projects: ["Crop Disease Detector"],
         featured: true
       },
       {
